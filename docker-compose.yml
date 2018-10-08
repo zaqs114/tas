@@ -17,5 +17,4 @@ tomcat:
   environment:
   - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
   volumes:
-  - /path/to/tomcat-persistence:/bitnami
   - ./target/tas.war:/bitnami/tomcat/data/tas.war
