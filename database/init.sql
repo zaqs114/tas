@@ -4,7 +4,7 @@ create table users
   login      varchar(30)       not null
     constraint users_pkey
     primary key,
-  password   varchar(30)       not null,
+  password   varchar(300)       not null,
   avatar     varchar(200),
   admin_perm integer default 0 not null
 );
