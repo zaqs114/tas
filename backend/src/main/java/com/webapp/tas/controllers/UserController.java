@@ -13,7 +13,8 @@ import static com.webapp.tas.Tables.USERS;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin(origins = "http://localhost:63343")
+
 public class UserController {
 
     @Autowired
@@ -35,5 +36,10 @@ public class UserController {
         ur.setPassword(passwordEncoder.encode(user.getPassword()));
         ur.setAdminPerm(0);
         ur.store();
+    }
+
+    @PostMapping("/login")
+    public void loginUser(){
+        
     }
 }
