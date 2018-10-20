@@ -53,4 +53,3 @@ create table reviews
 
 create unique index reviews_reviewid_uindex
   on reviews (reviewid);
-
