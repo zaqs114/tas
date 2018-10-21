@@ -10,7 +10,7 @@ public @Data class Game {
     String icon;
     String title;
     String description;
-    Date launchdate;
+    Date launch_date;
     String publisher;
     String screen;
     String platform;
