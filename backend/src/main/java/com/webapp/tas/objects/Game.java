@@ -2,7 +2,7 @@ package com.webapp.tas.objects;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 public @Data class Game {

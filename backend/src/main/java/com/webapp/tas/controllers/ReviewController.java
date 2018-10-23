@@ -25,7 +25,7 @@ public class ReviewController {
     }
 
     /**
-     * ReviewID validation methon needs to be added
+     * ReviewID validation method needs to be added
      * @param newReview
      */
     @PostMapping("/addreview")
