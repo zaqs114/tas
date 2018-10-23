@@ -28,7 +28,6 @@ public class GameController {
      * Method of validating admin permissions needs to be added
      * GameId validation method needs to be added
      * launch_date format needs to be tested (java.sql vs java.utl?)
-     * test commit from mac
      * @param newGame
      */
     @PostMapping("/addgame")
