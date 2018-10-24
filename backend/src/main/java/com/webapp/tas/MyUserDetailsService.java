@@ -20,7 +20,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) {
-        User user = jooq.fetchOne(USERS, USERS.LOGIN.eq(login)).into(User.class);
+        MyUserPrincipal user = jooq.fetchOne(USERS, USERS.LOGIN.eq(login)).into(MyUserPrincipal.class);
+        //TODO wywala sie jak podasz nieistniejacego usera, dodaj jakis error handling
         if (user == null) {
             throw new UsernameNotFoundException(login);
         }
