@@ -1,4 +1,4 @@
-package com.webapp.tas;
+package com.webapp.tas.objects;
 
 import com.webapp.tas.objects.User;
 import org.springframework.security.core.GrantedAuthority;

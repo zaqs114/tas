@@ -1,8 +1,5 @@
-package com.webapp.tas;
+package com.webapp.tas.objects;
 
-import com.webapp.tas.objects.User;
-import com.webapp.tas.tables.daos.UsersDao;
-import com.webapp.tas.tables.interfaces.IUsers;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
