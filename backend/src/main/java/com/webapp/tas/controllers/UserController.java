@@ -1,17 +1,14 @@
 package com.webapp.tas.controllers;
 
-import com.webapp.tas.Tables;
 import com.webapp.tas.objects.User;
 import com.webapp.tas.s3.AmazonClient;
 import com.webapp.tas.tables.records.UsersRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import java.util.List;
 
@@ -37,20 +34,22 @@ public class UserController {
         this.amazonClient = amazonClient;
     }
 
-    //todo co jak nie znajdzie usera
     @GetMapping("/users")
     public List<User> usersList() {
         return jooq.select(USERS.LOGIN, USERS.AVATAR).from(USERS).fetchInto(User.class);
     }
 
-    //todo co jak jakies pole do rejestracji puste
-    //todo ogarnac co sie wpisze do bazy jak nie wyslesz pliku
     @PostMapping("/register")
     public void registerUser(@RequestPart(value = "login") String login,
                              @RequestPart(value = "password") String password,
                              @RequestPart(value = "avatar", required = false) MultipartFile file) {
         UsersRecord ur = jooq.newRecord(USERS);
-        ur.setAvatar(amazonClient.uploadFile(file));
+        if (file != null){
+            ur.setAvatar(amazonClient.uploadFile(file));
+        }else{
+            ur.setAvatar("");
+        }
+
         ur.setLogin(login);
         ur.setPassword(passwordEncoder.encode(password));
         ur.setAdminPerm(0);
@@ -60,8 +59,9 @@ public class UserController {
     //checking nickname of logged user
     //todo: wywali sie jesli nikt nie jest zalogowany
     @GetMapping("/loggedUsername")
-    public String loggedUserName(Authentication authentication){
-        return authentication.getName();
+    public String loggedUserName(Authentication authentication) {
+            return authentication.getName();
+
     }
 
     @GetMapping("/userDetails/{id}")
@@ -73,6 +73,5 @@ public class UserController {
         user.setAvatar(ur.getAvatar());
         return user;
     }
-
 
 }
