@@ -1,4 +1,3 @@
---skrypt wygenerowny przez datagrip
 create table users
 (
   login      varchar(30)       not null
@@ -8,6 +7,7 @@ create table users
   avatar     varchar(200),
   admin_perm integer default 0 not null
 );
+
 
 create unique index users_login_uindex
   on users (login);
@@ -24,6 +24,8 @@ create table games
   publisher   varchar(30)  not null,
   screen      varchar(200)
 );
+
+
 
 create unique index games_gameid_uindex
   on games (gameid);
@@ -44,48 +46,7 @@ create table reviews
     references games
 );
 
+
+
 create unique index reviews_reviewid_uindex
   on reviews (reviewid);
-
-create table platforms
-(
-  platformid    integer     not null
-    constraint platfroms_pkey
-    primary key,
-  platform_name varchar(30) not null
-);
-
-create unique index platfroms_platformid_uindex
-  on platforms (platformid);
-
-create table game_platform
-(
-  gameid     integer
-    constraint game_platform_games_gameid_fk
-    references games,
-  platformid integer
-    constraint game_platform_platforms_platformid_fk
-    references platforms
-);
-
-create table genre
-(
-  genreid    integer not null
-    constraint genre_pkey
-    primary key,
-  genre_name varchar(30)
-);
-
-create unique index genre_genreid_uindex
-  on genre (genreid);
-
-create table game_genre
-(
-  genreid integer
-    constraint game_genre_genre_genreid_fk
-    references genre,
-  gameid  integer
-    constraint game_genre_games_gameid_fk
-    references games
-);
-
