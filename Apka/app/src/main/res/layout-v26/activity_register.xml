@@ -9,11 +9,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dUsername"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:hint="@string/Username" />
+        android:hint="@string/Username"
+        android:autofillHints="Username" />
 
     <EditText
         android:id="@+id/dPassword"
@@ -28,33 +27,19 @@
         android:layout_marginRight="0dp"
         android:ems="10"
         android:hint="@string/Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:autofillHints="@string/Password" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="292dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="347dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="363dp"
         android:text="@string/Register" />
-
-    <TextView
-        android:id="@+id/dResponse"
-        android:layout_width="221dp"
-        android:layout_height="37dp"
-        android:layout_alignTop="@+id/dUsername"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="194dp"
-        android:text="ELDOKA"
-        android:visibility="gone" />
 
 </RelativeLayout>
