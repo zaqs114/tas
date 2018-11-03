@@ -1,8 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {User} from '../models/user';
 
-const apiUrl: string = 'http://localhost:63343'
+const apiUrl: string = 'http://localhost:8080'
 
 @Injectable()
 export class UserService {

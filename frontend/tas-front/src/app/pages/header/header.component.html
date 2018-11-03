@@ -6,10 +6,10 @@
       </div>
       <form class="navbar-form navbar-right">
         <div class="form-group">
-          <input [(ngModel)]="user.login" class="form-control" type="text" placeholder="Login">
+          <input [ngModelOptions]="{standalone: true}" [(ngModel)]="user.login" class="form-control" type="text" placeholder="Login">
         </div>
         <div class="form-group">
-          <input [(ngModel)]="user.password" class="form-control" type="password" placeholder="Hasło">
+          <input [ngModelOptions]="{standalone: true}" [(ngModel)]="user.password" class="form-control" type="password" placeholder="Hasło">
         </div>
         <button class="btn btn-primary" type="submit" (click)="login()" >Zaloguj Się</button>
         <button class="btn btn-success" type="submit" (click)="register()">Zarejestruj Się</button>
