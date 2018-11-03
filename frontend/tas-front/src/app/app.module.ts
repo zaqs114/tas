@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './pages/header/header.component';
+import {UserService} from './services/user.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent }
@@ -26,7 +26,7 @@ imports: [BrowserModule,
   RouterModule.forRoot(appRoutes),
   NgbModule
 ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  user: User = new User();
+  private user: User;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit() {
+
   }
 
   login() {
@@ -19,6 +20,5 @@ export class HeaderComponent implements OnInit {
   }
 
   register() {
-    userService.registerUser(this.user);
   }
 }
