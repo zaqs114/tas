@@ -4,11 +4,10 @@ import com.webapp.tas.objects.Game;
 import com.webapp.tas.tables.records.GamesRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import static com.webapp.tas.Tables.REVIEWS;
+import static org.jooq.impl.DSL.*;
 import static com.webapp.tas.Tables.GAMES;
 
 import java.util.List;
@@ -21,7 +20,35 @@ public class GameController {
 
     @GetMapping("/games")
     public List<Game> gamesList(){
-        return jooq.select().from(GAMES).fetchInto(Game.class);
+        return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(Game.class);
+    }
+
+    @GetMapping("/games/{id}")
+    public Game getGameByID(@PathVariable int id){
+        Game game = new Game();
+        GamesRecord gameRecord = jooq.fetchOne(GAMES, GAMES.GAMEID.eq(id));
+        game.setGameid(gameRecord.getGameid());
+        game.setIcon(gameRecord.getIcon());
+        game.setTitle(gameRecord.getTitle());
+        game.setDescription(gameRecord.getDescription());
+        game.setLaunch_date(gameRecord.getLaunchdate());
+        game.setPublisher(gameRecord.getPublisher());
+        game.setScreen(gameRecord.getScreen());
+        game.setPlatform(gameRecord.getPlatform());
+        game.setGenre(gameRecord.getGenre());
+        //int test = game.getScore(id);
+        return game;
+    }
+    //TODO sprobuj jakos sformatowac tego jsona
+
+    @GetMapping("/games/ranking")
+    public String gameRanking(){
+        return jooq.select(avg(REVIEWS.RATE).as("score"), GAMES.TITLE).from(REVIEWS)
+                .join(GAMES).on(GAMES.GAMEID.eq(REVIEWS.GAMEID))
+                .groupBy(GAMES.TITLE)
+                .orderBy(one().desc())
+                .fetch()
+                .formatJSON();
     }
 
     /**
@@ -44,5 +71,6 @@ public class GameController {
         game.setGenre(newGame.getGenre());
 
     }
-
+//TODO error handling
+//TODO autoryzacja
 }
