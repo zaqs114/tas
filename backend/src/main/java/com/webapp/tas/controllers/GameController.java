@@ -22,6 +22,7 @@ public class GameController {
     public List<Game> gamesList(){
         return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(Game.class);
     }
+    //TODO dorobic klase dla tego
 
     @GetMapping("/games/{id}")
     public Game getGameByID(@PathVariable int id){
