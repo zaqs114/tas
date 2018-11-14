@@ -1,20 +1,32 @@
-postgres:
-  container_name: postgres-container
-  image: postgres:9.4
-  ports:
-   - 5440:5432
-  environment:
-   - POSTGRES_USER=psqladmin
-   - POSTGRES_PASSWORD=tasy
-   - POSTGRES_DB=psqldbase
-  volumes:
-   - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
-tomcat:
-  container_name: tomcat-container
-  image: bitnami/tomcat:latest
-  ports:
-  - "8000:8080"
-  environment:
-  - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
-  volumes:
-  - ./target/tas.war:/bitnami/tomcat/data/tas.war
+version: '3'
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres:9.4
+    ports:
+     - 5440:5432
+    environment:
+     - POSTGRES_USER=psqladmin
+     - POSTGRES_PASSWORD=tasy
+     - POSTGRES_DB=psqldbase
+    volumes:
+     - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+    - app
+  tomcat:
+    container_name: tomcat-container
+    image: bitnami/tomcat:latest
+    ports:
+    - "8000:8080"
+    environment:
+    - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
+    volumes:
+    - ./target/tas.war:/bitnami/tomcat/data/tas.war
+    depends_on:
+    - postgres
+    networks:
+    - app
+networks:
+  app:
+
+#jdbc:postgresql://postgres-container:5432/psqldbase
