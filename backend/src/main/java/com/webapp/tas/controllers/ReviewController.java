@@ -28,7 +28,7 @@ public class ReviewController {
     }
 
     /**
-     * Returns list of reviews for given gameid
+     * Returns list of reviews for given gameid.
      * @param gID
      * @return
      */
