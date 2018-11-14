@@ -27,6 +27,9 @@ public class ReviewController {
         return jooq.select().from(REVIEWS).fetchInto(Review.class);
     }
 
+//    public String reviewList(){
+//        return jooq.select().from(REVIEWS).fetch()
+//                .formatJSON();
     /**
      * Returns list of reviews for given gameid.
      * @param gID
