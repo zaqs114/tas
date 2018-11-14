@@ -69,7 +69,7 @@ public class GameController {
         game.setScreen(newGame.getScreen());
         game.setPlatform(newGame.getPlatform());
         game.setGenre(newGame.getGenre());
-
+        game.store();
     }
 //TODO error handling
 //TODO autoryzacja
