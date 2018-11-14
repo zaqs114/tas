@@ -46,14 +46,14 @@ public class UserController {
 
     @PostMapping("/register")
     public HttpStatus registerUser(@RequestPart(value = "login") String login,
-                                   @RequestPart(value = "password") String password,
-                                   @RequestPart(value = "avatar", required = false) MultipartFile file) {
+                                   @RequestPart(value = "password") String password){
+//        @RequestPart(value = "avatar", required = false) MultipartFile file
         UsersRecord ur = jooq.newRecord(USERS);
-        if (file != null){
-            ur.setAvatar(amazonClient.uploadFile(file));
-        }else{
-            ur.setAvatar("");
-        }
+//        if (file != null){
+//            ur.setAvatar(amazonClient.uploadFile(file));
+//        }else{
+//            ur.setAvatar("");
+//        }
 
         ur.setLogin(login);
         ur.setPassword(passwordEncoder.encode(password));
