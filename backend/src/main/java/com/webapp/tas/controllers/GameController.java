@@ -40,7 +40,7 @@ public class GameController {
         //int test = game.getScore(id);
         return game;
     }
-    //TODO sprobuj jakos sformatowac tego jsona
+    //TODO sprobuj jakos sformatowac tego jsona , bo wywala nulle
 
     @GetMapping("/games/ranking")
     public String gameRanking(){

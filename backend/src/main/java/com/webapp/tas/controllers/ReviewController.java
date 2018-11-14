@@ -32,7 +32,7 @@ public class ReviewController {
      * @param gID
      * @return
      */
-    @GetMapping("/reviews/{id}")
+    @GetMapping("/reviews/{gID}")
     public List<Review> gameReviewsList(@PathVariable int gID){
         return jooq.select().from(REVIEWS).where(REVIEWS.GAMEID.eq(gID)).fetchInto(Review.class);
     }
@@ -54,4 +54,5 @@ public class ReviewController {
         review.setGameid(newReview.getGameID());
         review.store();
     }
+    //TODO pobieranie nazwy uzytkownika
 }
