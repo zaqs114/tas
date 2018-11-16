@@ -44,20 +44,27 @@ public class GameController {
     }
 
     @GetMapping("/games/{id}")
-    public Game getGameByID(@PathVariable int id){
-        Game game = new Game();
-        GamesRecord gameRecord = jooq.fetchOne(GAMES, GAMES.GAMEID.eq(id));
-        game.setGameid(gameRecord.getGameid());
-        game.setIcon(gameRecord.getIcon());
-        game.setTitle(gameRecord.getTitle());
-        game.setDescription(gameRecord.getDescription());
-        game.setLaunch_date(gameRecord.getLaunchdate());
-        game.setPublisher(gameRecord.getPublisher());
-        game.setScreen(gameRecord.getScreen());
-        game.setPlatform(gameRecord.getPlatform());
-        game.setGenre(gameRecord.getGenre());
-        //int test = game.getScore(id);
-        return game;
+    public List<Game> getGameByID(@PathVariable int id){
+//        Game game = new Game();
+//        GamesRecord gameRecord = jooq.fetchOne(GAMES, GAMES.GAMEID.eq(id));
+//        game.setGameid(gameRecord.getGameid());
+//        game.setIcon(gameRecord.getIcon());
+//        game.setTitle(gameRecord.getTitle());
+//        game.setDescription(gameRecord.getDescription());
+//        game.setLaunch_date(gameRecord.getLaunchdate());
+//        game.setPublisher(gameRecord.getPublisher());
+//        game.setScreen(gameRecord.getScreen());
+//        game.setPlatform(gameRecord.getPlatform());
+//        game.setGenre(gameRecord.getGenre());
+//        return game;
+        return jooq.select(GAMES.GAMEID, GAMES.ICON, GAMES.TITLE, GAMES.DESCRIPTION, (GAMES.LAUNCHDATE).as("launch_date"),
+                GAMES.PUBLISHER, GAMES.SCREEN, GAMES.PLATFORM, GAMES.GENRE, avg(REVIEWS.RATE).as("score"))
+                .from(GAMES)
+                .leftOuterJoin(REVIEWS).on(REVIEWS.GAMEID.eq(GAMES.GAMEID))
+                .where(GAMES.GAMEID.eq(id))
+                .groupBy(GAMES.GAMEID, GAMES.ICON, GAMES.TITLE, GAMES.DESCRIPTION,
+                        GAMES.PUBLISHER, GAMES.SCREEN, GAMES.PLATFORM, GAMES.GENRE)
+                .fetchInto(Game.class);
     }
 
     @GetMapping("/games/ranking")
