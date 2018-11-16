@@ -1,7 +1,7 @@
 package com.webapp.tas.controllers;
 
 import com.webapp.tas.objects.Review;
-import com.webapp.tas.tables.records.GamesRecord;
+import com.webapp.tas.objects.UserReview;
 import com.webapp.tas.tables.records.ReviewsRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.webapp.tas.Tables.GAMES;
 import static com.webapp.tas.Tables.REVIEWS;
+import static org.jooq.impl.DSL.*;
 
 import java.util.List;
 
@@ -42,6 +43,22 @@ public class ReviewController {
 
 
     /**
+     * returns a list of UserReview for given userID
+     * @param uID
+     * @return
+     */
+    @GetMapping("/reviews/user/{uID}")
+    public List<UserReview> getUserReviews(@PathVariable String uID){
+        return jooq.select(REVIEWS.REVIEWID, REVIEWS.TITLE, REVIEWS.RATE, (GAMES.TITLE).as("gameTitle"))
+                .from(REVIEWS)
+                .join(GAMES).on(GAMES.GAMEID.eq(REVIEWS.GAMEID))
+                .where(REVIEWS.USERID.eq(uID))
+                .groupBy(REVIEWS.REVIEWID, REVIEWS.TITLE, REVIEWS.RATE, GAMES.TITLE)
+                .fetchInto(UserReview.class);
+    }
+
+
+    /**
      * GameID needs to be taken from game object instance on frontend side
      * ReviewID validation method needs to be added
      * @param newReview
@@ -57,5 +74,4 @@ public class ReviewController {
         review.setGameid(newReview.getGameID());
         review.store();
     }
-    //TODO pobieranie nazwy uzytkownika
 }

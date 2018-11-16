@@ -1,6 +1,8 @@
 package com.webapp.tas.controllers;
 
 import com.webapp.tas.objects.Game;
+import com.webapp.tas.objects.GameShortDto;
+import com.webapp.tas.objects.RankingDto;
 import com.webapp.tas.tables.records.GamesRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,28 @@ public class GameController {
     @Autowired
     private DSLContext jooq;
 
+
+    /**
+     * Returns list of all games, returns ShortDto (GameID, Title & Icon)
+     * @return
+     */
     @GetMapping("/games")
-    public List<Game> gamesList(){
-        return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(Game.class);
+    public List<GameShortDto> gamesList(){
+        return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(GameShortDto.class);
     }
-    //TODO dorobic klase dla tego
+
+    /**
+     * returns game by its title
+     * @param title
+     * @return
+     */
+    @GetMapping("/games/title/{title}")
+    public List<GameShortDto> getGameByTitle(@PathVariable String title){
+        return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON)
+                .from(GAMES)
+                .where(GAMES.TITLE.eq(title))
+                .fetchInto(GameShortDto.class);
+    }
 
     @GetMapping("/games/{id}")
     public Game getGameByID(@PathVariable int id){
@@ -40,16 +59,15 @@ public class GameController {
         //int test = game.getScore(id);
         return game;
     }
-    //TODO sprobuj jakos sformatowac tego jsona , bo wywala nulle
 
     @GetMapping("/games/ranking")
-    public String gameRanking(){
-        return jooq.select(avg(REVIEWS.RATE).as("score"), GAMES.TITLE).from(REVIEWS)
+    public List<RankingDto> gameRanking(){
+        return jooq.select(avg(REVIEWS.RATE).as("score"), GAMES.TITLE, GAMES.GAMEID).from(REVIEWS)
                 .join(GAMES).on(GAMES.GAMEID.eq(REVIEWS.GAMEID))
-                .groupBy(GAMES.TITLE)
+                .groupBy(GAMES.TITLE, GAMES.GAMEID)
                 .orderBy(one().desc())
-                .fetch()
-                .formatJSON();
+                .fetchInto(RankingDto.class);
+                //.fetch().formatJSON();
     }
 
     /**

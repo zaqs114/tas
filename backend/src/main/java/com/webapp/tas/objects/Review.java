@@ -31,5 +31,4 @@ public @Data class Review {
         this.gameID = gameID;
     }
 
-
 }
