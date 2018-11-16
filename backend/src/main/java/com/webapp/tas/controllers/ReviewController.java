@@ -1,15 +1,16 @@
 package com.webapp.tas.controllers;
 
+import com.webapp.tas.errors.NotUniqueExcetpion;
 import com.webapp.tas.objects.Review;
 import com.webapp.tas.objects.UserReview;
 import com.webapp.tas.tables.records.ReviewsRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import static com.webapp.tas.Tables.GAMES;
 import static com.webapp.tas.Tables.REVIEWS;
-import static org.jooq.impl.DSL.*;
 
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class ReviewController {
      * @param newReview
      */
     @PostMapping("/addreview")
-    public void addReview(@RequestBody Review newReview){
+    public HttpStatus addReview(@RequestBody Review newReview){
         ReviewsRecord review = jooq.newRecord(REVIEWS);
         review.setReviewid(newReview.getReviewID());
         review.setTitle(newReview.getTitle());
@@ -72,6 +73,11 @@ public class ReviewController {
         review.setRate(newReview.getRate());
         review.setUserid(newReview.getUserID());
         review.setGameid(newReview.getGameID());
-        review.store();
+        try{
+            review.store();
+        }catch (Exception e){
+            throw new NotUniqueExcetpion("ReviewID is not unique");
+        }
+        return HttpStatus.CREATED;
     }
 }
