@@ -1,19 +1,46 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-collapse collapse" id="navbar">
-      <div class="navbar-brand">
-        <a href="#">TAS FRONT</a>
-      </div>
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input [ngModelOptions]="{standalone: true}" [(ngModel)]="user.login" class="form-control" type="text" placeholder="Login">
+<nav style="background: lightsteelblue" class="navbar navbar-expand-lg navbar-light rounded">
+  <a class="navbar-brand" href="#">Rotten Cebullion</a>
+  <button class="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation" type="button" data-toggle="collapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Top 100</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Mobilne</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdownPlatform" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown">wg platformy</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownPlatform">
+          <a class="dropdown-item" href="#">PC</a>
+          <a class="dropdown-item" href="#">Sony</a>
+          <a class="dropdown-item" href="#">Microsoft</a>
+          <a class="dropdown-item" href="#">Nintendo</a>
         </div>
-        <div class="form-group">
-          <input [ngModelOptions]="{standalone: true}" [(ngModel)]="user.password" class="form-control" type="password" placeholder="Hasło">
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdownGenre" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown">wg gatunku</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownGenre">
+          <a class="dropdown-item" href="#">Fabularne</a>
+          <a class="dropdown-item" href="#">Strzelanki</a>
+          <a class="dropdown-item" href="#">Platformówki</a>
+          <a class="dropdown-item" href="#">Strategiczne</a>
+          <a class="dropdown-item" href="#">Karciane</a>
+          <a class="dropdown-item" href="#">Wyścigowe</a>
         </div>
-        <button class="btn btn-primary" type="submit" (click)="login()" >Zaloguj Się</button>
-        <button class="btn btn-success" type="submit" (click)="register()">Zarejestruj Się</button>
-      </form>
-    </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+      <input class="form-control" aria-label="Search" type="text" placeholder="Szukaj">
+    </form>
+    <span style="padding: 10px">
+          <button class="btn btn-primary" type="submit" (click)="login()" >Zaloguj Się</button>
+        </span>
+    <span>
+          <button class="btn btn-success" type="submit" (click)="register()">Zarejestruj Się</button>
+        </span>
   </div>
 </nav>

@@ -1,14 +1,8 @@
-export class User {
-  login: string;
-  password: string;
-  avatar: string;
-  admin_perm: number;
-
+export class Message {
   constructor(json: Object) {
     for(let propName in json) {
       this[propName] = json[propName];
     }
     return this;
   }
-
 }
