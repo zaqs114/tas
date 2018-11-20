@@ -50,24 +50,28 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = dPassword.getText().toString().trim();
                 if(!TextUtils.isEmpty(login) && !TextUtils.isEmpty(password)){
                     sendPost(login, password);
+
+                    Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    RegisterActivity.this.startActivity(loginIntent);
                 }
             }
         });
         }
         public void sendPost(String login, String password){
             mAPIService.savePost(login, password).enqueue(new Callback<Post>() {
-                @Override
-                public void onResponse(Call<Post> call, retrofit2.Response<Post> response) {
+                        @Override
+                        public void onResponse(Call<Post> call, retrofit2.Response<Post> response) {
 
-                    if(response.isSuccessful()){
-                        showResponse(response.body().toString());
-                        Log.i(TAG, "post sent to API" + response.body().toString());
-                    }
-                }
+                            if(response.isSuccessful()){
+                                showResponse(response.body().toString());
+                                Log.i(TAG, "post sent to API" + response.body().toString());
 
-                @Override
-                public void onFailure(Call<Post> call, Throwable t) {
-                    Log.e(TAG, "unable to sent a post to API");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Post> call, Throwable t) {
+                            Log.e(TAG, "unable to sent a post to API");
                     t.printStackTrace();
                 }
             });

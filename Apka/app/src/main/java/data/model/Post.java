@@ -29,13 +29,11 @@ public class Post {
         }
 
 
-//    @Override
-//    public String toString() {
-//        return "Post{" +
-//                "login='" + login + '\'' +
-//                ", body='" + body + '\'' +
-//                ", userId=" + userId +
-//                ", id=" + id +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Post{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
