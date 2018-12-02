@@ -9,6 +9,7 @@ create table users
 );
 
 
+
 create unique index users_login_uindex
   on users (login);
 
@@ -22,7 +23,9 @@ create table games
   description varchar(500) not null,
   launchdate  date         not null,
   publisher   varchar(30)  not null,
-  screen      varchar(200)
+  screen      varchar(200),
+  platform    varchar(100) not null,
+  genre       varchar(50)
 );
 
 
