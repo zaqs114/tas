@@ -11,6 +11,10 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
+  getAllGames() {
+    return this.http.get<Array<Game>>(apiUrl + '/games');
+  }
+
   getGameByTitle(title: string) {
     return this.http.get<Game>(apiUrl + '/games/title/' + title);
   }

@@ -15,11 +15,11 @@ export class ReviewService {
     return this.http.get<Array<Review>>(apiUrl + '/reviews');
   }
 
-  getReviews(gameID: number) {
+  getReviewsByGame(gameID: number) {
     return this.http.get<Array<Review>>(apiUrl + '/reviews/' + gameID);
   }
 
-  getReviews(userID: string) {
+  getReviewsByUser(userID: string) {
     return this.http.get<Array<Review>>(apiUrl + '/reviews/user/' + userID);
   }
 

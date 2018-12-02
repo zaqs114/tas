@@ -1,46 +1,57 @@
-<nav style="background: lightsteelblue" class="navbar navbar-expand-lg navbar-light rounded">
-  <a class="navbar-brand" href="#">Rotten Cebullion</a>
-  <button class="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation" type="button" data-toggle="collapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav style="background: lightsteelblue; height: 150px; display: block"
+     class="navbar navbar-expand-lg navbar-light rounded">
+  <div>
+    <a class="navbar-brand" routerLink="main"><img style="max-width: 100px; height: auto" src="../../../assets/onion.png"></a>
+  </div>
 
   <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Top 100</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mobilne</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdownPlatform" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown">wg platformy</a>
-        <div class="dropdown-menu" aria-labelledby="dropdownPlatform">
-          <a class="dropdown-item" href="#">PC</a>
-          <a class="dropdown-item" href="#">Sony</a>
-          <a class="dropdown-item" href="#">Microsoft</a>
-          <a class="dropdown-item" href="#">Nintendo</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdownGenre" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown">wg gatunku</a>
-        <div class="dropdown-menu" aria-labelledby="dropdownGenre">
-          <a class="dropdown-item" href="#">Fabularne</a>
-          <a class="dropdown-item" href="#">Strzelanki</a>
-          <a class="dropdown-item" href="#">Platformówki</a>
-          <a class="dropdown-item" href="#">Strategiczne</a>
-          <a class="dropdown-item" href="#">Karciane</a>
-          <a class="dropdown-item" href="#">Wyścigowe</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-md-0">
-      <input class="form-control" aria-label="Search" type="text" placeholder="Szukaj">
-    </form>
-    <span style="padding: 10px">
-          <button class="btn btn-primary" type="submit" (click)="login()" >Zaloguj Się</button>
+    <div class="col-md-7">
+      <ul style="font-size: 2rem; padding-top: 90px" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="game-list">Top 100</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="main">Mobilne</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="dropdownPlatform" aria-expanded="false" aria-haspopup="true"
+             data-toggle="dropdown">wg platformy</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownPlatform">
+            <a class="dropdown-item" routerLink="main">PC</a>
+            <a class="dropdown-item" routerLink="main">Sony</a>
+            <a class="dropdown-item" routerLink="main">Microsoft</a>
+            <a class="dropdown-item" routerLink="main">Nintendo</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="dropdownGenre" aria-expanded="false" aria-haspopup="true"
+             data-toggle="dropdown">wg gatunku</a>
+          <div style="font-size: 2rem" class="dropdown-menu" aria-labelledby="dropdownGenre">
+            <a class="dropdown-item" routerLink="main">Fabularne</a>
+            <a class="dropdown-item" routerLink="main">Strzelanki</a>
+            <a class="dropdown-item" routerLink="main">Platformówki</a>
+            <a class="dropdown-item" routerLink="main">Strategiczne</a>
+            <a class="dropdown-item" routerLink="main">Karciane</a>
+            <a class="dropdown-item" routerLink="main">Wyścigowe</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div style="top: -50px; left: 50px;" class="col-md-6">
+      <div class="col-md-4">
+        <form class="form-inline my-2 my-md-0">
+          <input class="form-control" aria-label="Search" type="text" placeholder="Szukaj">
+        </form>
+      </div>
+      <div class="col-md-8">
+         <span style="padding: 10px">
+          <button class="btn btn-primary" type="submit" (click)="login()">Zaloguj Się</button>
         </span>
-    <span>
+        <span>
           <button class="btn btn-success" type="submit" (click)="register()">Zarejestruj Się</button>
         </span>
+      </div>
+    </div>
+
   </div>
 </nav>
