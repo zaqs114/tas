@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Rejestracja</h1>
+    <div class="content full">
+      <div class="container">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-6" style="padding: 20px;">
+              <form>
+                <div class="col-md-12">
+                  <label>Login</label>
+                  <div class="row">
+                    <input type="text" [(ngModel)]="user.password">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label>Hasło</label>
+                  <div class="row">
+                    <input type="password" [(ngModel)]="user.password">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">Powtórz hasło</label>
+                  <div class="row">
+                    <input type="password">
+                  </div>
+                </div>
+                <div class="col-md-12" style="text-align: left; padding: 15px">
+                  <button type="submit" class="btn btn-success">
+                    <span>zarejestruj się</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

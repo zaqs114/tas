@@ -15,13 +15,15 @@ import { GameReviewComponent } from './pages/game-review/game-review.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import {GameItemComponent} from './pages/game-list/game-item/game-item.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'main', component: MainComponent },
   { path: 'game-page/:id', component: GamePageComponent },
   { path: 'user-profile/:id', component: UserProfileComponent },
-  { path: 'game-list', component: GameListComponent }
+  { path: 'game-list', component: GameListComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     GameReviewComponent,
     UserProfileComponent,
     GameItemComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
 imports: [BrowserModule,
   HttpClientModule,

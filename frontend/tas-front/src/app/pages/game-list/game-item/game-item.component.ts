@@ -7,9 +7,11 @@ import {Game} from '../../../services/games/game';
 })
 export class GameItemComponent implements OnInit {
 
-  @Input() game:Game;
+  @Input() game: Game;
+  @Input() position: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,12 +1,12 @@
-<nav style="background: lightsteelblue; height: 150px; display: block"
+<nav style="background: lightsteelblue; min-height: 150px; display: block"
      class="navbar navbar-expand-lg navbar-light rounded">
   <div>
     <a class="navbar-brand" routerLink="main"><img style="max-width: 100px; height: auto" src="../../../assets/onion.png"></a>
   </div>
 
   <div class="collapse navbar-collapse">
-    <div class="col-md-7">
-      <ul style="font-size: 2rem; padding-top: 90px" class="navbar-nav mr-auto">
+    <div class="col-md-8">
+      <ul style="font-size: 2rem; " class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="game-list">Top 100</a>
         </li>
@@ -16,7 +16,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="dropdownPlatform" aria-expanded="false" aria-haspopup="true"
              data-toggle="dropdown">wg platformy</a>
-          <div class="dropdown-menu" aria-labelledby="dropdownPlatform">
+          <div style="font-size: 2rem" class="dropdown-menu" aria-labelledby="dropdownPlatform">
             <a class="dropdown-item" routerLink="main">PC</a>
             <a class="dropdown-item" routerLink="main">Sony</a>
             <a class="dropdown-item" routerLink="main">Microsoft</a>
@@ -37,18 +37,16 @@
         </li>
       </ul>
     </div>
-    <div style="top: -50px; left: 50px;" class="col-md-6">
-      <div class="col-md-4">
-        <form class="form-inline my-2 my-md-0">
+    <div>
+      <div class="col-md-12">
+        <form  style="padding: 10px" class="form-inline my-2 my-md-0">
           <input class="form-control" aria-label="Search" type="text" placeholder="Szukaj">
         </form>
-      </div>
-      <div class="col-md-8">
          <span style="padding: 10px">
-          <button class="btn btn-primary" type="submit" (click)="login()">Zaloguj Się</button>
+          <button class="btn btn-primary" type="submit" routerLink="/register">Zaloguj Się</button>
         </span>
-        <span>
-          <button class="btn btn-success" type="submit" (click)="register()">Zarejestruj Się</button>
+        <span style="padding: 10px">
+          <button class="btn btn-success" type="submit" routerLink="/register">Zarejestruj Się</button>
         </span>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Lista gier</h1>
-    <app-game-item *ngFor="let game of games" [game]="game"></app-game-item>
+    <h1>Ranking</h1>
+    <app-game-item *ngFor="let game of games; let i = index" [game]="game" [position]=i+1 ></app-game-item>
   </div>
 </div>
