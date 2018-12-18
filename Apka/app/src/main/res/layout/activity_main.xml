@@ -42,6 +42,7 @@
                     android:text="profil"
                     android:textStyle="bold"/>
                 <ImageView
+                    android:id="@+id/profilebtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/homeprofile"
@@ -63,8 +64,8 @@
                     android:layout_gravity="center"
                     android:text="ranking"
                     android:textStyle="bold" />
-
                 <ImageView
+                    android:id="@+id/rankingbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -85,6 +86,7 @@
                     android:text="kontakt"
                     android:textStyle="bold"/>
                 <ImageView
+                    android:id="@+id/supportbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/homesupport"
@@ -105,7 +107,6 @@
                 android:id="@+id/gameslist"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content">
-
             </ListView>
 
         </LinearLayout>

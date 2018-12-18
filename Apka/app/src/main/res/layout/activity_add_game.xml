@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".AddGameActivity"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4"
-        android:layout_alignParentTop="true">
+        android:weightSum="4">
         <LinearLayout
             android:id="@+id/headerhome"
             android:layout_width="0dp"
@@ -65,7 +64,6 @@
                 android:layout_gravity="center"
                 android:text="ranking"
                 android:textStyle="bold" />
-
             <ImageView
                 android:id="@+id/rankingbtn"
                 android:layout_width="wrap_content"
@@ -96,18 +94,85 @@
                 android:scaleType="centerInside" />
         </LinearLayout>
     </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="125dp"
+            android:layout_gravity="center"
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dodanie gry"
+                android:textSize="35sp"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gameid"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gametitle"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tytuł gry"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gamelaunchdate"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Data premiery"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gamepublisher"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Wydawca"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gameplatform"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Platformy"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gamegenre"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gatunek"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/gamedescription"
+                android:layout_width="330dp"
+                android:layout_height="150dp"
+                android:hint="Opis"
+                android:textAlignment="center"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLength="300"
+                android:maxLines="4" />
+            <Button
+                android:id="@+id/addgamebtn"
+                android:layout_gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Dodaj"/>
         </LinearLayout>
+
+    </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>

@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText dPassword = (EditText) findViewById(R.id.dPassword);
         final TextView dRegisterLink = (TextView) findViewById(R.id.dRegisterLink);
         final Button loginBtn = (Button) findViewById(R.id.loginBtn);
+        final Button nextActivitybtn = (Button) findViewById(R.id.nextActivitybtn);
 
         mAPIService = ApiUtils.getAPIService();
         dResponse = (TextView) findViewById(R.id.dResponse);
@@ -52,10 +53,21 @@ public class LoginActivity extends AppCompatActivity {
                 String password = dPassword.getText().toString().trim();
                 if (!TextUtils.isEmpty(login) && !TextUtils.isEmpty(password)) {
                     sendPost(login, password);
-
+                    Intent loginSuccessIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    LoginActivity.this.startActivity(loginSuccessIntent);
                 }
             }
         });
+
+        nextActivitybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextActivityIntent = new Intent(LoginActivity.this, RankingActivity.class);
+                LoginActivity.this.startActivity(nextActivityIntent);
+            }
+        });
+
+
 
     }
 
