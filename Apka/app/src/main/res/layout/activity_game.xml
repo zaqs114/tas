@@ -101,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
     <LinearLayout
+        android:layout_marginTop="85dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -112,12 +113,7 @@
             android:textSize="26sp"
             android:textAlignment="center"
             android:text="Game Title"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="26sp"
-            android:textAlignment="center"
-            android:text="ocena: "/>
+
         <ImageView
             android:layout_gravity="center"
             android:id="@+id/gamepic"
@@ -135,11 +131,96 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/gamedescrption"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a turpis est. Aliquam erat volutpat. Curabitur sed lectus non massa auctor pretium. Maecenas facilisis sem leo, sit amet commodo purus tempus quis. Pellentesque non mauris in ex semper ornare non eu mi. Quisque luctus suscipit dui quis interdum. Integer consequat nec risus quis facilisis. Morbi quis commodo mi. Sed vel tempor magna. Pellentesque vitae risus sapien. Donec eleifend sapien nulla, ac congue nisl venenatis fermentum. Aenean id arcu vitae nulla volutpat accumsan in in nibh. Vestibulum id iaculis diam. Sed sit amet libero non urna rutrum ullamcorper."
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a turpis est. Aliquam erat volutpat. Curabitur sed lectus non massa auctor pretium. Maecenas facilisis sem leo, sit amet commodo purus tempus quis. Pellentesque non mauris in ex semper ornare non eu mi. Quisque luctus suscipit dui quis interdum."
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="26sp"
+                android:textAlignment="center"
+                android:text="ocena: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="X"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="26sp"
+                android:textAlignment="center"
+                android:text="data wydania: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="X"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="26sp"
+                android:textAlignment="center"
+                android:text="wydawca: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="X"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="26sp"
+                android:textAlignment="center"
+                android:text="gatunek: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="X"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="26sp"
+                android:textAlignment="center"
+                android:text="platformy: "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="X"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista recenzji: "
+            android:textSize="26sp"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
     </LinearLayout>
     </ScrollView>
 

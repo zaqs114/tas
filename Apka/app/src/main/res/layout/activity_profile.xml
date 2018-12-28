@@ -7,10 +7,10 @@
     android:background="@color/grayLight"
     android:orientation="vertical"
     tools:context=".ProfileActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="405dp">
+        android:layout_height="405dp"
+        android:id="@+id/profilelayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,6 +80,7 @@
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>
+
 
     <!-- <LinearLayout
         android:layout_width="360dp"

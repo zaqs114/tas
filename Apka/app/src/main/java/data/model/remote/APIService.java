@@ -18,19 +18,19 @@ public interface APIService {
     Call<Post> savePost(@Part("login") String login,
                         @Part("password") String password);
 
-    @POST("/login")
-    @FormUrlEncoded
-    Call<PostLogin> postLogin(@Field("login") String login,
-                              @Field("password") String password);
-
-    @GET("/loggedUsername")
-    Call<ResponseBody> getLoggedUser();
-
-    @GET("/users")
-    Call<ResponseBody> getLoggedUsers();
-
-    @GET("/logout")
-    Call<ResponseBody> logout();
+//    @POST("/login")
+//    @FormUrlEncoded
+//    Call<PostLogin> postLogin(@Field("login") String login,
+//                              @Field("password") String password);
+//
+//    @GET("/loggedUsername")
+//    Call<ResponseBody> getLoggedUser();
+//
+//    @GET("/users")
+//    Call<ResponseBody> getLoggedUsers();
+//
+//    @GET("/logout")
+//    Call<ResponseBody> logout();
     
 }
 

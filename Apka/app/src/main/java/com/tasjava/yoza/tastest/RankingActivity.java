@@ -45,7 +45,7 @@ public class RankingActivity extends AppCompatActivity {
         addgamebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addGameIntent = new Intent(RankingActivity.this, SupportActivity.class);
+                Intent addGameIntent = new Intent(RankingActivity.this, AddGameActivity.class);
                 RankingActivity.this.startActivity(addGameIntent);
             }
         });
