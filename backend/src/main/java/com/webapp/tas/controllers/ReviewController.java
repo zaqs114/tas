@@ -2,6 +2,7 @@ package com.webapp.tas.controllers;
 
 import com.webapp.tas.errors.NotUniqueExcetpion;
 import com.webapp.tas.objects.Review;
+import com.webapp.tas.objects.ReviewShort;
 import com.webapp.tas.objects.UserReview;
 import com.webapp.tas.tables.records.ReviewsRecord;
 import org.jooq.DSLContext;
@@ -65,9 +66,8 @@ public class ReviewController {
      * @param newReview
      */
     @PostMapping("/addreview")
-    public HttpStatus addReview(@RequestBody Review newReview){
+    public HttpStatus addReview(@RequestBody ReviewShort newReview){
         ReviewsRecord review = jooq.newRecord(REVIEWS);
-        review.setReviewid(newReview.getReviewID());
         review.setTitle(newReview.getTitle());
         review.setContent(newReview.getContent());
         review.setRate(newReview.getRate());
@@ -80,6 +80,4 @@ public class ReviewController {
         }
         return HttpStatus.CREATED;
     }
-
-    //TODO można dodac generowanie ID recenzji
 }
