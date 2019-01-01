@@ -80,4 +80,6 @@ public class ReviewController {
         }
         return HttpStatus.CREATED;
     }
+
+    //TODO można dodac generowanie ID recenzji
 }
