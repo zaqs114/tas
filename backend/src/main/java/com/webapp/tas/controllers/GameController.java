@@ -29,6 +29,11 @@ public class GameController {
     @Autowired
     private AmazonClient amazonClient;
 
+    @Autowired
+    GameController(AmazonClient amazonClient){
+        this.amazonClient = amazonClient;
+    }
+
 
     /**
      * Returns list of all games, returns ShortDto (GameID, Title & Icon)
