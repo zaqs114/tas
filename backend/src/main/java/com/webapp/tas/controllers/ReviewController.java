@@ -1,18 +1,21 @@
 package com.webapp.tas.controllers;
 
+import com.webapp.tas.errors.NotFoundException;
 import com.webapp.tas.errors.NotUniqueExcetpion;
 import com.webapp.tas.objects.Review;
 import com.webapp.tas.objects.UserReview;
+import com.webapp.tas.tables.records.GamesRecord;
 import com.webapp.tas.tables.records.ReviewsRecord;
+import com.webapp.tas.tables.records.UsersRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import static com.webapp.tas.Tables.GAMES;
-import static com.webapp.tas.Tables.REVIEWS;
-
 import java.util.List;
+
+import static com.webapp.tas.Tables.*;
+import static com.webapp.tas.Tables.USERS;
 
 @RestController
 public class ReviewController {
@@ -67,6 +70,12 @@ public class ReviewController {
     @PostMapping("/addreview")
     public HttpStatus addReview(@RequestBody Review newReview){
         ReviewsRecord review = jooq.newRecord(REVIEWS);
+        UsersRecord ur = jooq.fetchOne(USERS, USERS.LOGIN.eq(newReview.getUserID()));
+        GamesRecord gr = jooq.fetchOne(GAMES, GAMES.GAMEID.eq(newReview.getGameID()));
+
+        if (ur == null) throw new NotFoundException("User does not exist");
+        if (gr == null) throw new NotFoundException("Game does not exist");
+
         review.setReviewid(newReview.getReviewID());
         review.setTitle(newReview.getTitle());
         review.setContent(newReview.getContent());
