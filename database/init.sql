@@ -9,12 +9,13 @@ create table users
 );
 
 
+
 create unique index users_login_uindex
   on users (login);
 
 create table games
 (
-  gameid      integer      not null
+  gameid      serial      not null
     constraint games_pkey
     primary key,
   icon        varchar(200),
@@ -22,7 +23,9 @@ create table games
   description varchar(500) not null,
   launchdate  date         not null,
   publisher   varchar(30)  not null,
-  screen      varchar(200)
+  screen      varchar(200),
+  platform    varchar(100) not null,
+  genre       varchar(50)
 );
 
 
@@ -32,7 +35,7 @@ create unique index games_gameid_uindex
 
 create table reviews
 (
-  reviewid integer       not null
+  reviewid serial       not null
     constraint reviews_pkey
     primary key,
   title    varchar(120)  not null,
