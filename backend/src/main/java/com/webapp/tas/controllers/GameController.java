@@ -94,7 +94,7 @@ public class GameController {
 
     @PostMapping("/addgame")
     public HttpStatus addGame(/*@RequestBody Game newGame*/
-            @RequestParam(value = "gameid") int gameid,
+            /*@RequestParam(value = "gameid") int gameid,*/
             @RequestParam(value = "icon", required = false) MultipartFile iconfile,
             @RequestParam(value = "title") String title,
             @RequestParam(value = "description") String description,
@@ -114,7 +114,7 @@ public class GameController {
 //        game.setPlatform(newGame.getPlatform());
 //        game.setGenre(newGame.getGenre());
 
-        game.setGameid(gameid);
+        //game.setGameid(gameid);
         game.setTitle(title);
         game.setDescription(description);
         game.setLaunchdate(launch_date);
