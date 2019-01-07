@@ -15,7 +15,7 @@ create unique index users_login_uindex
 
 create table games
 (
-  gameid      integer      not null
+  gameid      serial      not null
     constraint games_pkey
     primary key,
   icon        varchar(200),
@@ -35,7 +35,7 @@ create unique index games_gameid_uindex
 
 create table reviews
 (
-  reviewid integer       not null
+  reviewid serial       not null
     constraint reviews_pkey
     primary key,
   title    varchar(120)  not null,

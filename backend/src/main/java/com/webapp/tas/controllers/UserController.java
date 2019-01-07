@@ -85,4 +85,28 @@ public class UserController {
         return user;
     }
 
+    @PutMapping("/user/{nick}/avatarUpdate")
+    public HttpStatus changeAvatar(@PathVariable(value = "nick") String login,
+                                   @RequestPart(value = "avatar") MultipartFile file){
+        UsersRecord ur = jooq.fetchOne(USERS, USERS.LOGIN.eq(login));
+        if (ur == null) throw new NotFoundException("User not found");
+        if (file != null){
+            ur.setAvatar(amazonClient.uploadFile(file));
+            ur.store();
+            return HttpStatus.OK;
+        }else{
+            ur.setAvatar("");
+            ur.store();
+            return HttpStatus.NO_CONTENT;
+        }
+
+    }
+
+    @GetMapping("/user/{nick}/isAdmin")
+    public int isAdmin(@PathVariable String nick){
+        UsersRecord ur = jooq.fetchOne(USERS, USERS.LOGIN.eq(nick));
+        if (ur == null) throw new NotFoundException("User not found");
+        return ur.getAdminPerm();
+    }
+
 }

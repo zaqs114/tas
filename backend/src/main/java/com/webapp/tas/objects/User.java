@@ -10,10 +10,10 @@ import java.util.Collections;
 import java.util.List;
 
 public @Data class User {
-    String login;
-    String password = "restricted";
-    String avatar;
-    int admin_perm;
+    private String login;
+    private String password = "restricted";
+    private String avatar;
+    private int admin_perm;
 
 
 }
