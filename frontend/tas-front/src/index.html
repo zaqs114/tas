@@ -1,16 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <style type="text/css">
+    body, html {
+      height: 100%;
+    }
+    .image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      max-height: 150px;
+      margin:-60px 0 0 -60px;
+      -webkit-animation:spin 2s linear infinite;
+      -moz-animation:spin 2s linear infinite;
+      animation:spin 2s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+  </style>
   <meta charset="utf-8">
-  <title>TasFront</title>
+  <title>Rotten Cebullion</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/onion.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>
+    <img class="image" src="assets/onion.png">
+  </app-root>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>

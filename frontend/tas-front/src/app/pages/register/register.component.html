@@ -10,23 +10,23 @@
                 <div class="col-md-12">
                   <label>Login</label>
                   <div class="row">
-                    <input type="text" [(ngModel)]="user.password">
+                    <input type="text" [(ngModel)]="user.login" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <label>Hasło</label>
                   <div class="row">
-                    <input type="password" [(ngModel)]="user.password">
+                    <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <label class="form-label">Powtórz hasło</label>
                   <div class="row">
-                    <input type="password">
+                    <input type="password" [(ngModel)]="reapeatPassword" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
                 <div class="col-md-12" style="text-align: left; padding: 15px">
-                  <button type="submit" class="btn btn-success">
+                  <button type="submit" class="btn btn-success" (click)="onRegister()">
                     <span>zarejestruj się</span>
                   </button>
                 </div>

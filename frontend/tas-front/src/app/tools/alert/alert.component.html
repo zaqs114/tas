@@ -1,0 +1,4 @@
+<div *ngFor="let alert of alerts" style="font-size: large; font-weight: bold;" class="{{ cssClass(alert) }}">
+  {{alert.message}}
+  <a  style="left: 10px" class="close" (click)="removeAlert(alert)">x</a>
+</div>

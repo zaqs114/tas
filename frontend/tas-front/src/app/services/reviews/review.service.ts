@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Review} from './review';
 
-const apiUrl: string = 'http://localhost:8000';
+const apiUrl: string = 'http://projekttasy.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'

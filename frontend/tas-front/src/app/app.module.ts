@@ -8,22 +8,27 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './pages/header/header.component';
-import {UserService} from './services/users/user.service';
+import { UserService } from './services/users/user.service';
 import { GameListComponent } from './pages/game-list/game-list.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
 import { GameReviewComponent } from './pages/game-review/game-review.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import {GameItemComponent} from './pages/game-list/game-item/game-item.component';
+import { GameItemComponent } from './pages/game-list/game-item/game-item.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AlertComponent } from './tools/alert/alert.component';
+import {ReviewService} from './services/reviews/review.service';
+import {GameService} from './services/games/game.service';
+import {AlertService} from './tools/alert/alert.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'main', component: MainComponent },
   { path: 'game-page/:id', component: GamePageComponent },
-  { path: 'user-profile/:id', component: UserProfileComponent },
+  { path: 'profile/:id', component: UserProfileComponent },
   { path: 'game-list', component: GameListComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     UserProfileComponent,
     GameItemComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AlertComponent
   ],
 imports: [BrowserModule,
   HttpClientModule,
@@ -45,7 +51,12 @@ imports: [BrowserModule,
   RouterModule.forRoot(appRoutes),
   NgbModule
 ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    ReviewService,
+    GameService,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
