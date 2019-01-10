@@ -5,22 +5,22 @@
       <div class="container">
         <div class="col-sm-12">
           <div class="row">
-            <div class="col-sm-6" style="padding: 20px;">
+            <div style="font-size: 20px; padding: 20px; text-align: left">
               <form>
-                <div class="col-md-12">
+                <div>
                   <label>Login</label>
                   <div class="row">
-                    <input type="text" [(ngModel)]="user.login">
+                    <input type="text" [(ngModel)]="user.login" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
-                <div class="col-md-12">
-                  <label>Hasło</label>
+                <div >
+                  <label style="margin-top: 15px" >Hasło</label>
                   <div class="row">
-                    <input type="password" [(ngModel)]="user.password">
+                    <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
-                <div class="col-md-12" style="text-align: left; padding: 15px">
-                  <button type="submit" class="btn btn-success" (click)="onLogin()">
+                <div style="text-align: center; padding-top: 10px">
+                  <button style="font-size: 20px; margin-left: -15px" type="submit" class="btn btn-success" (click)="onLogin()">
                     <span>zaloguj się</span>
                   </button>
                 </div>

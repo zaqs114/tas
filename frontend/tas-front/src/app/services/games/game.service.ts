@@ -19,8 +19,8 @@ export class GameService {
     return this.http.get<Game>(apiUrl + '/games/title/' + title);
   }
 
-  getGameByID() {
-    return this.http.get<Game>(apiUrl + '/games/ranking');
+  getGameByID(gameid: number) {
+    return this.http.get<Game>(apiUrl + '/games/' + gameid);
   }
 
   getGameRanking(title: string) {

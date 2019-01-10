@@ -14,9 +14,11 @@ export class GameListComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.games.push(new Game({title: 'gra nr 1', score: 4}));
-    this.games.push(new Game({title: 'gra nr 2', score: 3}));
-    this.games.push(new Game({title: 'gra nr 3', score: 5}));
+
+    this.gameService.getAllGames().subscribe(games => {
+      console.log(games);
+      this.games = games;
+    });
   }
 
 }

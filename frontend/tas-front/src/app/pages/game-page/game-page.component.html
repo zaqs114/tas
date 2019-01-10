@@ -1,3 +1,45 @@
-<p>
-  game-page works!
-</p>
+<div class="jumbotron">
+  <div class="container">
+    <div style="text-align: center; padding: 20px;">
+      <div class="row">
+        <div class="col-md-4">
+          <img style="padding: 20px; max-width: 250px; height: auto;" src="{{game.icon}}">
+        </div>
+        <div style="padding: 20px;" class="col-md-4">
+          <div class="row">
+            <span style="font-size: 45px">{{game.title}}</span>
+          </div>
+          <div class="row">
+            <span style="margin-top: 20px; font-size: 15px">Gatunek: {{game.genre}}</span>
+          </div>
+          <div class="row">
+            <span style="margin-top:  10px; font-size: 15px">Wydawca: {{game.publisher}}</span>
+          </div>
+          <div class="row">
+            <span style="margin-top:  10px; font-size: 15px">Platforma: {{game.platform}}</span>
+          </div>
+          <div class="row">
+            <span style="margin-top:  10px; font-size: 15px">Premiera: {{game.launch_date}}</span>
+          </div>
+        </div>
+        <div style="padding: 20px; font-size: 25px; text-align: center" class="col-md-4">
+          <div class="row">
+            Ocena graczy:
+          </div>
+          <div class="row">
+            {{game.score}} / 100
+          </div>
+        </div>
+        <div class="row">
+          <span style="padding: 20px; font-size: 20px">{{game.description}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    Recenzje
+  </div>
+</div>
