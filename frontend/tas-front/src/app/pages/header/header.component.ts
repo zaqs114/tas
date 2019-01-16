@@ -23,12 +23,4 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
-
-  signIn() {
-
-  }
-
-  signUp() {
-
-  }
 }

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.userService.loginUser(this.user).subscribe();
+    //window.location.href = 'http://localhost:4200';
   }
 
 }

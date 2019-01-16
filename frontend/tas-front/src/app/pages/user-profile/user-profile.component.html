@@ -1,3 +1,83 @@
-<p>
-  user-profile works!
-</p>
+<div class="jumbotron">
+  <div class="container">
+    <div style="font-weight: bold; font-size: 30px" class="row">
+      <li (click)="currentPage = 'profile'"> Profil </li>
+      <li (click)="currentPage = 'password'"> Hasło </li>
+      <li (click)="currentPage = 'reviews'"> Recenzje </li>
+      <li *ngIf="user.admin_perm" (click)="currentPage = 'admin'">Administracja</li>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentPage == 'profile'" class="jumbotron">
+  <div class="container">
+    <div style="text-align: center; padding: 20px;">
+      <div class="row">
+        <div class="col-md-4">
+          <img style="padding: 20px; max-width: 150px; height: auto;" src="{{user.avatar}}">
+        </div>
+        <div style="padding: 20px;" class="col-md-8">
+          <div class="row">
+            <span style="font-size: 45px">{{user.login}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentPage == 'password'" class="jumbotron">
+  <div class="container">
+    <div class="col-sm-6" style="padding: 20px;">
+      <form>
+        <div class="col-md-12">
+          <label>Nowe hasło</label>
+          <div class="row">
+            <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Powtórz hasło</label>
+          <div class="row">
+            <input type="password" [(ngModel)]="reapeatPassword" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="col-md-12" style="text-align: left; padding: 15px">
+          <button type="submit" class="btn btn-success" (click)="changePassword()">
+            <span>zmień hasło</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentPage == 'reviews'" class="jumbotron">
+  <div *ngFor="let review of reviews">
+    <div class="container">
+      <div style="font-weight: bold; font-size: 30px" class="col-md-4">
+        Ocena: {{review.rate}} / 100
+      </div>
+      <div class="col-md-6">
+        <div style=" font-weight: bold; font-size: 25px" class="row">
+          {{review.title}}
+        </div>
+        <div style="font-size: 20px" class="row">
+          {{review.content}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="currentPage == 'admin'" class="jumbotron">
+  <div class="container">
+    <div style="text-align: center; padding: 20px;">
+      <div class="row">
+       Asministracja
+      </div>
+    </div>
+  </div>
+</div>
+
+

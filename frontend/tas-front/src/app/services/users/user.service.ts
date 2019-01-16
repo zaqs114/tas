@@ -21,19 +21,19 @@ export class UserService {
   }
 
   getLoggedUser() {
-    return this.http.get(apiUrl + '/users/loggedUsername');
+    return this.http.get(apiUrl + '/loggedUsername');
   }
 
   registerUser(user: User) {
-    let body = new FormData();
-    body.append('user', user.login);
-    body.append('password', user.password);
+    // let body = new FormData();
+    // body.append('user', user.login);
+    // body.append('password', user.password);
 
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/form-data')
-    };
+    // let options = {
+    //   headers: new HttpHeaders().set('Content-Type', 'multipart/form-data')
+    // };
 
-    return this.http.post(apiUrl + '/register', body.toString(), options);
+    return this.http.post(apiUrl + '/register2', user);
   }
 
   loginUser(user: User) {
@@ -45,7 +45,7 @@ export class UserService {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     };
 
-    return this.http.post(apiUrl + '/login', body, options);
+    return this.http.post(apiUrl + '/login', body.toString(), options);
   }
 
 }

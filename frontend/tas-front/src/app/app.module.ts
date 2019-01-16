@@ -11,7 +11,6 @@ import { HeaderComponent } from './pages/header/header.component';
 import { UserService } from './services/users/user.service';
 import { GameListComponent } from './pages/game-list/game-list.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
-import { GameReviewComponent } from './pages/game-review/game-review.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { GameItemComponent } from './pages/game-list/game-item/game-item.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
     HeaderComponent,
     GameListComponent,
     GamePageComponent,
-    GameReviewComponent,
     UserProfileComponent,
     GameItemComponent,
     LoginComponent,
