@@ -26,6 +26,13 @@
                 android:orientation="vertical"
                 android:src="@drawable/profilepic" />
 
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="update"
+                android:id="@+id/updateImageBtn"/>
+
             <TextView
                 android:id="@+id/pUsername"
                 android:layout_width="wrap_content"

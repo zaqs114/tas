@@ -19,7 +19,7 @@ import data.model.Games;
 
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GamesViewHolder> {
 
-    private static final String TAG = "GamesAdapter";
+    private static final String TAG = "GameAdapter";
     private ArrayList<Games> dataList;
 
     public GameAdapter(ArrayList<Games> dataList) {

@@ -139,7 +139,7 @@ public class AddGameActivity extends AppCompatActivity {
     public void sendGame(String title, String launchdate, String publisher, String platform, String genre, String description, Uri fileUri) {
 //        public void sendGame(String title, String launchdate, String publisher, String platform, String genre, String description) {
         Retrofit retrofit = NetworkClient.getRetrofitClient(this);
-        APIService uploadAPIs = retrofit.create(APIService.class);
+//        APIService uploadAPIs = retrofit.create(APIService.class);
 //        Create a file object using file path
         getRealPathFromURI(context, fileUri);
 

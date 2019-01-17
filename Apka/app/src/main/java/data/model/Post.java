@@ -3,37 +3,39 @@ package data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import okhttp3.RequestBody;
+
 public class Post {
 
         @SerializedName("login")
         @Expose
-        private String login;
+        private RequestBody login;
         @SerializedName("password")
         @Expose
-        private String password;
+        private RequestBody password;
 
-        public String getLogin() {
+        public RequestBody getLogin() {
             return login;
         }
 
-        public void setLogin(String login) {
+        public void setLogin(RequestBody login) {
             this.login = login;
         }
 
-        public String getPassword() {
+        public RequestBody getPassword() {
             return password;
         }
 
-        public void setPassword(String password) {
+        public void setPassword(RequestBody password) {
             this.password = password;
         }
 
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Post{" +
+//                "login='" + login + '\'' +
+//                ", password='" + password + '\'' +
+//                '}';
+//    }
 }

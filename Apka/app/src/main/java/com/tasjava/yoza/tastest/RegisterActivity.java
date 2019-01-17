@@ -13,6 +13,8 @@ import android.util.Log;
 
 import data.model.Post;
 import data.model.remote.ApiUtils;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import com.android.volley.RequestQueue;
@@ -48,8 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String login = dUsername.getText().toString().trim();
                 String password = dPassword.getText().toString().trim();
+                RequestBody login2 = RequestBody.create(MediaType.parse("text/plain"), login);
+                RequestBody password2 = RequestBody.create(MediaType.parse("text/plain"), password);
                 if(!TextUtils.isEmpty(login) && !TextUtils.isEmpty(password)){
-                    sendPost(login, password);
+                    sendPost(login2, password2);
 
                     Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                     RegisterActivity.this.startActivity(loginIntent);
@@ -57,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         }
-        public void sendPost(String login, String password){
+        public void sendPost(RequestBody login, RequestBody password){
             mAPIService.savePost(login, password).enqueue(new Callback<Post>() {
                         @Override
                         public void onResponse(Call<Post> call, retrofit2.Response<Post> response) {
