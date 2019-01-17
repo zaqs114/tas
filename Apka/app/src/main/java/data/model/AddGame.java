@@ -4,6 +4,9 @@ package data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import okhttp3.MultipartBody;
+import retrofit2.http.Part;
+
 //import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class AddGame {
@@ -34,7 +37,7 @@ public class AddGame {
     private String publisher;
     @SerializedName("screen")
     
-    private String screen;
+    private MultipartBody.Part screen;
     @SerializedName("platform")
     
     private String platform;
@@ -84,11 +87,11 @@ public class AddGame {
         this.publisher = publisher;
     }
 
-    public String getScreen() {
+    public MultipartBody.Part getScreen() {
         return screen;
     }
 
-    public void setScreen(String screen) {
+    public void setScreen(MultipartBody.Part screen) {
         this.screen = screen;
     }
 

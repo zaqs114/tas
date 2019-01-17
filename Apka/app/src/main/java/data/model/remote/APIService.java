@@ -26,6 +26,7 @@ public interface APIService {
     Call<Post> savePost(@Part("login") String login,
                         @Part("password") String password);
 
+
     @POST("/addgame")
     @Multipart
     Call<AddGame> addgame(@Part("title") String dgametitle,
@@ -33,8 +34,9 @@ public interface APIService {
                           @Part("launch_date") String dgamelaunchdate,
                           @Part("publisher") String dgamepublisher,
                           @Part("platform") String dgameplatform,
-                          @Part("genre") String dgamegenre);
-//                            @Part MultipartBody.Part dgamescreen);
+                          @Part("genre") String dgamegenre,
+                          @Part MultipartBody.Part dgamescreen);
+
 
     @POST("/login")
     @FormUrlEncoded
