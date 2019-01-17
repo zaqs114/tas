@@ -116,11 +116,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="review id"
-                android:id="@+id/reviewid"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="Tytuł recenzji"
                 android:id="@+id/reviewtitle"/>
             <EditText

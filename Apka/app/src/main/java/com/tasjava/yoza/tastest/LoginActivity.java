@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import data.model.Post;
+import data.model.PostLogin;
 import data.model.remote.APIService;
 import data.model.remote.ApiUtils;
 import retrofit2.Call;
@@ -72,19 +73,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void sendPost(String login, String password) {
-        mAPIService.savePost(login, password).enqueue(new Callback<Post>() {
+        mAPIService.postLogin(login, password).enqueue(new Callback<PostLogin>() {
             @Override
-            public void onResponse(Call<Post> call, retrofit2.Response<Post> response) {
+            public void onResponse(Call<PostLogin> call, retrofit2.Response<PostLogin> response) {
 
                 if (response.isSuccessful()) {
                     showResponse(response.body().toString());
+//                    response.raw().priorResponse().code() == 302;
+                    String cookie = response.headers().get("Set-Cookie");
                     Log.i(TAG, "post sent to API" + response.body().toString());
 
                 }
             }
 
             @Override
-            public void onFailure(Call<Post> call, Throwable t) {
+            public void onFailure(Call<PostLogin> call, Throwable t) {
                 Log.e(TAG, "unable to sent a post to API");
                 t.printStackTrace();
             }

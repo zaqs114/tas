@@ -116,7 +116,7 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:id="@+id/gamepic"
+            android:id="@+id/gameicon"
             android:adjustViewBounds="true"
             android:maxWidth="150dp"
             android:maxHeight="150dp"
@@ -148,6 +148,7 @@
                 android:textAlignment="center"
                 android:text="ocena: "/>
             <TextView
+                android:id="@+id/gamescore"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="X"/>
@@ -163,6 +164,7 @@
                 android:textAlignment="center"
                 android:text="data wydania: "/>
             <TextView
+                android:id="@+id/gamelaunchdate"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="X"/>
@@ -178,6 +180,7 @@
                 android:textAlignment="center"
                 android:text="wydawca: "/>
             <TextView
+                android:id="@+id/gamepublisher"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="X"/>
@@ -193,6 +196,7 @@
                 android:textAlignment="center"
                 android:text="gatunek: "/>
             <TextView
+                android:id="@+id/gamegenre"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="X"/>
@@ -208,6 +212,7 @@
                 android:textAlignment="center"
                 android:text="platformy: "/>
             <TextView
+                android:id="@+id/gameplatform"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="X"/>

@@ -115,13 +115,6 @@
                 android:textSize="35sp"
                 android:textAlignment="center"/>
             <EditText
-                android:id="@+id/gameid"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ID"
-                android:textAlignment="center"/>
-            <EditText
                 android:id="@+id/gametitle"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -189,6 +182,12 @@
             </LinearLayout>
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/dResponse"
+            android:layout_width="221dp"
+            android:layout_height="37dp"
+            android:text="ELDOKA"
+            android:visibility="gone" />
 
     </LinearLayout>
     </ScrollView>
