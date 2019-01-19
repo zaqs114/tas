@@ -1,5 +1,9 @@
 package adapter;
 
+import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tasjava.yoza.tastest.GameActivity;
 import com.tasjava.yoza.tastest.R;
 
 import java.util.ArrayList;
@@ -15,8 +20,13 @@ import data.model.Games;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHolder> {
 
+    public GamesAdapter activity;
     private static final String TAG = "GamesAdapter";
     private ArrayList<Games> dataList;
+    public View view;
+    public ClipData.Item currentItem;
+    private Context mContext;
+
 
     public GamesAdapter(ArrayList<Games> dataList) {
         this.dataList = dataList;
@@ -30,10 +40,10 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
     }
 
     @Override
-    public void onBindViewHolder(GamesViewHolder holder, int position) {
+    public void onBindViewHolder(GamesViewHolder holder, final int position) {
 
 //        int gameId = dataList.get(position).getGameid();
-        String gameTitle = dataList.get(position).getTitle();
+        final String gameTitle = dataList.get(position).getTitle();
         String gameIcon = dataList.get(position).getIcon();
 //        String gameDescription = dataList.get(position).getDescription();
 //        String gameScore = dataList.get(position).getScore();
@@ -46,6 +56,15 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
 //        holder.gameid.setText(Integer.toString(gameId));
         holder.gametitle.setText(gameTitle);
         holder.gameicon.setText(gameIcon);
+
+        holder.gametitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, GameActivity.class);
+                intent.putExtra(gameTitle, dataList.get(position).getTitle());
+                mContext.startActivity(intent);
+            }
+        });
 //        holder.gamedecription.setText(gameDescription);
 //        holder.gamescore.setText(gameScore);
 //        holder.gamelaunchdate.setText(gameLanuchdate);

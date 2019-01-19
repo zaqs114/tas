@@ -31,12 +31,12 @@ public interface APIService {
 
     @POST("/addgame")
     @Multipart
-    Call<AddGame> addgame(@Part("title") String dgametitle,
-                          @Part("description") String dgamedescription,
-                          @Part("launch_date") String dgamelaunchdate,
-                          @Part("publisher") String dgamepublisher,
-                          @Part("platform") String dgameplatform,
-                          @Part("genre") String dgamegenre,
+    Call<AddGame> addgame(@Part("title") RequestBody dgametitle,
+                          @Part("description") RequestBody dgamedescription,
+                          @Part("launch_date") RequestBody dgamelaunchdate,
+                          @Part("publisher") RequestBody dgamepublisher,
+                          @Part("platform") RequestBody dgameplatform,
+                          @Part("genre") RequestBody dgamegenre,
                           @Part MultipartBody.Part dgamescreen);
 
 

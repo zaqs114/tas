@@ -117,6 +117,12 @@ public class AddGameActivity extends AppCompatActivity {
                 String platform = gameplatform.getText().toString().trim();
                 String genre = gamegenre.getText().toString().trim();
                 String description = gamedescription.getText().toString().trim();
+                RequestBody title2 = RequestBody.create(MediaType.parse("text/plain"), title);
+                RequestBody launchDate2 = RequestBody.create(MediaType.parse("text/plain"), launchDate);
+                RequestBody publisher2 = RequestBody.create(MediaType.parse("text/plain"), publisher);
+                RequestBody platform2 = RequestBody.create(MediaType.parse("text/plain"), platform);
+                RequestBody genre2 = RequestBody.create(MediaType.parse("text/plain"), genre);
+                RequestBody description2 = RequestBody.create(MediaType.parse("text/plain"), description);
 //                if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(launchDate) && !TextUtils.isEmpty(publisher) &&
 //                        !TextUtils.isEmpty(platform) && !TextUtils.isEmpty(genre) && !TextUtils.isEmpty(description)){
 //                    sendGame(title, launchDate, publisher, platform, genre, description);
@@ -124,7 +130,7 @@ public class AddGameActivity extends AppCompatActivity {
 //                }
                 if(!TextUtils.isEmpty(title) && !TextUtils.isEmpty(launchDate) && !TextUtils.isEmpty(publisher) &&
                         !TextUtils.isEmpty(platform) && !TextUtils.isEmpty(genre) && !TextUtils.isEmpty(description)){
-                    sendGame(title, launchDate, publisher, platform, genre, description, fileUri);
+                    sendGame(title2, launchDate2, publisher2, platform2, genre2, description2, fileUri);
 
                 }
             }
@@ -136,7 +142,7 @@ public class AddGameActivity extends AppCompatActivity {
             }
         });
     }
-    public void sendGame(String title, String launchdate, String publisher, String platform, String genre, String description, Uri fileUri) {
+    public void sendGame(RequestBody title, RequestBody launchdate, RequestBody publisher, RequestBody platform, RequestBody genre, RequestBody description, Uri fileUri) {
 //        public void sendGame(String title, String launchdate, String publisher, String platform, String genre, String description) {
         Retrofit retrofit = NetworkClient.getRetrofitClient(this);
 //        APIService uploadAPIs = retrofit.create(APIService.class);
@@ -148,7 +154,7 @@ public class AddGameActivity extends AppCompatActivity {
 //         Create a request body with file and image media type
         RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
 //         Create MultipartBody.Part using file request-body,file name and part name
-        MultipartBody.Part part = MultipartBody.Part.createFormData("upload", file.getName(), fileReqBody);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("screen", file.getName(), fileReqBody);
 
 
         mAPIService.addgame(title, launchdate, publisher, platform, genre, description, part).enqueue(new Callback<AddGame>() {

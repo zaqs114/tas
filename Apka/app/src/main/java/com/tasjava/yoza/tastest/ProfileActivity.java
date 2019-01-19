@@ -165,7 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
         
         RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
 
-        MultipartBody.Part part = MultipartBody.Part.createFormData("upload", file.getName(), fileReqBody);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("avatar", file.getName(), fileReqBody);
 
 
         mAPIService.updateProfileImage(login, part).enqueue(new Callback<ResponseBody>() {

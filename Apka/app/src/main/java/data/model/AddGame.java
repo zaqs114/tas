@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Part;
 
 //import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -22,68 +23,68 @@ public class AddGame {
     private int gameid;
     @SerializedName("icon")
 
-    private String icon;
+    private RequestBody icon;
     @SerializedName("title")
 
-    private String title;
+    private RequestBody title;
     @SerializedName("decription")
 
-    private String description;
+    private RequestBody description;
     @SerializedName("launch_date")
     
-    private String launchDate;
+    private RequestBody launchDate;
     @SerializedName("publisher")
     
-    private String publisher;
+    private RequestBody publisher;
     @SerializedName("screen")
     
     private MultipartBody.Part screen;
     @SerializedName("platform")
     
-    private String platform;
+    private RequestBody platform;
     @SerializedName("genre")
     
-    private String genre;
+    private RequestBody genre;
 
 
 
-    public String getIcon() {
+    public RequestBody getIcon() {
         return icon;
     }
 
-    public void setIcon(String icon) {
+    public void setIcon(RequestBody icon) {
         this.icon = icon;
     }
 
-    public String getTitle() {
+    public RequestBody getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(RequestBody title) {
         this.title = title;
     }
 
-    public String getDescription() {
+    public RequestBody getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(RequestBody description) {
         this.description = description;
     }
 
-    public String getLaunchDate() {
+    public RequestBody getLaunchDate() {
         return launchDate;
     }
 
-    public void setLaunchDate(String launchDate) {
+    public void setLaunchDate(RequestBody launchDate) {
         this.launchDate = launchDate;
     }
 
-    public String getPublisher() {
+    public RequestBody getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(RequestBody publisher) {
         this.publisher = publisher;
     }
 
@@ -95,19 +96,19 @@ public class AddGame {
         this.screen = screen;
     }
 
-    public String getPlatform() {
+    public RequestBody getPlatform() {
         return platform;
     }
 
-    public void setPlatform(String platform) {
+    public void setPlatform(RequestBody platform) {
         this.platform = platform;
     }
 
-    public String getGenre() {
+    public RequestBody getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(RequestBody genre) {
         this.genre = genre;
     }
 
