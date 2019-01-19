@@ -45,6 +45,11 @@ public class GameController {
         return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(GameShortDto.class);
     }
 
+    @GetMapping("/games2")
+    public List<Game> gamesList2(){
+        return jooq.select().from(GAMES).fetchInto(Game.class);
+    }
+
     /**
      * returns game by its title
      * @param title
