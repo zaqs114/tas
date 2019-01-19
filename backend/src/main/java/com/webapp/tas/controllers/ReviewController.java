@@ -19,6 +19,7 @@ import static com.webapp.tas.Tables.*;
 import static com.webapp.tas.Tables.USERS;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReviewController {
 
     @Autowired
