@@ -6,7 +6,7 @@
           Profil
         </li>
         <li [ngStyle]="{'font-weight' : currentPage == 'edit' ? 'bold' : 'normal'}" (click)="setPage('edit')">
-          Edycja
+          Awatar
         </li>
         <li [ngStyle]="{'font-weight' : currentPage == 'reviews' ? 'bold' : 'normal'}" (click)="setPage('reviews')">
           Recenzje
@@ -54,7 +54,7 @@
             <div class="row">
               <input
                 style="display: none"
-                type="file" (change)="onFileChanged($event)"
+                type="file" (change)="onAvatarChanged($event)"
                 #fileInput>
               <button style="margin-left: 30px" class="btn btn-info" (click)="fileInput.click()">Wybierz avatar
               </button>
@@ -64,18 +64,6 @@
         <div *ngIf="avatar" style="font-weight: bold; font-size: 15px" class="row">
           Wybrany avatar: {{avatar.name}}
         </div>
-        <!--<div class="col-md-12">-->
-        <!--<label>Nowe hasło</label>-->
-        <!--<div class="row">-->
-        <!--<input type="password" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-12">-->
-        <!--<label class="form-label">Powtórz hasło</label>-->
-        <!--<div class="row">-->
-        <!--<input type="password" [(ngModel)]="repeatPassword" [ngModelOptions]="{standalone: true}">-->
-        <!--</div>-->
-        <!--</div>-->
         <div class="col-md-12" style="text-align: left; padding: 15px">
           <button type="submit" class="btn btn-success" (click)="onUpload()">
             <span>Zapisz zmiany</span>
@@ -87,7 +75,7 @@
 </div>
 
 <div *ngIf="user && currentPage == 'reviews'">
-  <div style="font-weight: bold; font-size: 30px" class="jumbotron">
+  <div *ngIf="reviews.length <= 0" style="font-weight: bold; font-size: 30px" class="jumbotron">
     Nie dodałeś żadych recenzji
   </div>
   <div *ngFor="let review of reviews" class="jumbotron">
@@ -110,19 +98,41 @@
 <div *ngIf="user && isAdmin && currentPage == 'newgame'" class="jumbotron">
   <div class="container">
     <form>
-      <div style="font-size: 20px; margin: 10px;" class="col-md-12">
+      <div style="font-size: 20px;" class="col-md-12">
         <div class="col-md-6">
           <div class="row">
-            <input class="form-control-plaintext" placeholder="Tytuł" type="text" [(ngModel)]="newGame.title"
+            <input style="margin-right: 10px" class="form-control-plaintext" placeholder="Tytuł" type="text" [(ngModel)]="newGame.title"
                    [ngModelOptions]="{standalone: true}">
           </div>
           <div class="row">
-            <input class="form-control-plaintext" placeholder="Opis" type="text" [(ngModel)]="newGame.description"
+            <input style="margin-right: 10px" class="form-control-plaintext" placeholder="Opis" type="text" [(ngModel)]="newGame.description"
                    [ngModelOptions]="{standalone: true}">
           </div>
           <div class="row">
-            <input class="form-control-plaintext" placeholder="Gatunek" type="text" [(ngModel)]="newGame.genre"
+            <input style="margin-right: 10px" class="form-control-plaintext" placeholder="Gatunek" type="text" [(ngModel)]="newGame.genre"
                    [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="row">
+            <input
+              style="display: none"
+              type="file" (change)="onIconChanged($event)"
+              #iconInput>
+            <button style="margin-bottom: 10px" class="btn btn-info" (click)="iconInput.click()">Wybierz okładkę
+            </button>
+          </div>
+          <div *ngIf="icon" style="font-weight: bold; font-size: 15px" class="row">
+            Wybrana okładka: {{icon.name}}
+          </div>
+          <div class="row">
+            <input
+              style="display: none"
+              type="file" (change)="onScreenChanged($event)"
+              #screenInput>
+            <button  style="margin-bottom: 10px" class="btn btn-info" (click)="screenInput.click()">Wybierz zrzut
+            </button>
+          </div>
+          <div *ngIf="screen" style=" margin-bottom: 10px; font-weight: bold; font-size: 15px" class="row">
+            Wybrany screenshot: {{screen.name}}
           </div>
         </div>
         <div class="col-md-6">
@@ -145,7 +155,7 @@
         </div>
       </div>
     </form>
-    <button class="btn btn-info" (click)="addGame()">Dodaj grę</button>
+    <button style="font-size: 20px" class="btn btn-info" (click)="addGame()">Dodaj grę</button>
   </div>
 </div>
 

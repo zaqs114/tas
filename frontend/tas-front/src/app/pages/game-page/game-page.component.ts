@@ -43,6 +43,8 @@ export class GamePageComponent implements OnInit {
     if (this.newReview.rate && this.newReview && this.newReview.title && this.newReview.content) {
       if (this.newReview.rate > 10) {
         this.alertService.error('Ocena nie może być większa od 10.');
+      } else if (this.newReview.rate < 1) {
+        this.alertService.error('Ocena nie może być mniejsza od 1.');
       } else {
         this.newReview.gameID = this.game.gameid;
         this.newReview.userID = localStorage.getItem('logged');

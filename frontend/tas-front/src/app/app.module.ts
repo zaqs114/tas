@@ -22,6 +22,7 @@ import {AlertService} from './tools/alert/alert.service';
 import {AuthService} from './services/auth/auth.service';
 import {RankingItemComponent} from './pages/ranking/ranking-item/ranking-item.component';
 import {RankingComponent} from './pages/ranking/ranking.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   { path: 'game-list', component: GameListComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'search', component: SearchComponent }
 ];
 
 @NgModule({
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     AlertComponent,
     RankingItemComponent,
-    RankingComponent
+    RankingComponent,
+    SearchComponent
   ],
 imports: [BrowserModule,
   HttpClientModule,

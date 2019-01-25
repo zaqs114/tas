@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <input style="font-size: 30px; margin-bottom: 15px;" class="form-control-plaintext" placeholder="Wpisz szukany tytuł" type="text" [(ngModel)]="text"
+             [ngModelOptions]="{standalone: true}">
+    </div>
+    <button style="font-size: 20px" class="btn btn-info" (click)="search()">Szukaj</button>
+  </div>
+</div>
+<app-game-item *ngFor="let game of games; let i = index" [game]="game"></app-game-item>

@@ -57,8 +57,16 @@ export class UserProfileComponent implements OnInit {
     this.currentPage = page;
   }
 
-  onFileChanged(event) {
+  onAvatarChanged(event) {
     this.avatar = event.target.files[0]
+  }
+
+  onIconChanged(event) {
+    this.icon = event.target.files[0]
+  }
+
+  onScreenChanged(event) {
+    this.screen = event.target.files[0]
   }
 
   onUpload() {
@@ -74,9 +82,17 @@ export class UserProfileComponent implements OnInit {
   }
 
   addGame() {
-    this.gameService.addGame(this.newGame, this.icon, this.screen).subscribe(() =>{
-      this.newGame = new Game({});
-      this.alertService.success("Dodano nową grę.")
-    })
+    if (this.newGame.title, this.newGame.platform, this.newGame.description) {
+      this.gameService.addGame(this.newGame, this.icon, this.screen).subscribe(() =>{
+        this.newGame = new Game({});
+        this.icon = null;
+        this.screen = null;
+        this.alertService.success("Dodano nową grę.");
+      },error => {
+        this.alertService.error("Wystąpił błąd przy dodawaniu gry.");
+      });
+    } else {
+      this.alertService.error("Tytuł platforma i opis muszą być wypełnione.");
+    }
   }
 }

@@ -17,7 +17,7 @@ export class GameService {
   }
 
   getGameByTitle(title: string) {
-    return this.http.get<Game>(apiUrl + '/games/title/' + title);
+    return this.http.get<Array<Game>>(apiUrl + '/games/title/' + title);
   }
 
   getGameByID(gameid: number) {
@@ -43,6 +43,6 @@ export class GameService {
     formData.append('screen', screen);
     formData.append('platform', game.platform);
     formData.append('genre', game.genre);
-    return this.http.post(apiUrl + '/addgame', formData, {params, headers});
+    return this.http.post(apiUrl + '/addgame', formData, {params, headers, withCredentials: true});
   }
 }
