@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Review} from './review';
 
-const apiUrl: string = 'http://projekttasy.herokuapp.com';
+const apiUrl: string = 'https://projekttasy.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class ReviewService {
     return this.http.get<Array<Review>>(apiUrl + '/reviews/user/' + userID);
   }
 
-  registerUser(review: Review) {
-    return this.http.post(apiUrl + '/addreview', review);
+  addReview(review: Review) {
+    return this.http.post(apiUrl + '/addreview', review, {withCredentials: true});
   }
 }

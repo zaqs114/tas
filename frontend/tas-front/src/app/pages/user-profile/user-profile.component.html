@@ -1,24 +1,43 @@
 <div class="jumbotron">
   <div class="container">
-    <div style="font-weight: bold; font-size: 30px" class="row">
-      <li (click)="currentPage = 'profile'"> Profil </li>
-      <li (click)="currentPage = 'password'"> Hasło </li>
-      <li (click)="currentPage = 'reviews'"> Recenzje </li>
-      <li *ngIf="user.admin_perm" (click)="currentPage = 'admin'">Administracja</li>
+    <div *ngIf="user" style=" display: table; cursor: pointer; font-size: 30px" class="row">
+      <ul class="horizontal-list">
+        <li [ngStyle]="{'font-weight' : currentPage == 'profile' ? 'bold' : 'normal'}" (click)="setPage('profile')">
+          Profil
+        </li>
+        <li [ngStyle]="{'font-weight' : currentPage == 'edit' ? 'bold' : 'normal'}" (click)="setPage('edit')">
+          Edycja
+        </li>
+        <li [ngStyle]="{'font-weight' : currentPage == 'reviews' ? 'bold' : 'normal'}" (click)="setPage('reviews')">
+          Recenzje
+        </li>
+        <li [ngStyle]="{'font-weight' : currentPage == 'newgame' ? 'bold' : 'normal'}" *ngIf="isAdmin"
+            (click)="setPage('newgame')">Nowa gra
+        </li>
+        <li [ngStyle]="{'font-weight' : currentPage == 'users' ? 'bold' : 'normal'}" *ngIf="isAdmin"
+            (click)="setPage('users')">Użytkownicy
+        </li>
+      </ul>
     </div>
   </div>
 </div>
+<app-alert></app-alert>
 
-<div *ngIf="currentPage == 'profile'" class="jumbotron">
+<div *ngIf="user && currentPage == 'profile'" class="jumbotron">
   <div class="container">
     <div style="text-align: center; padding: 20px;">
       <div class="row">
-        <div class="col-md-4">
-          <img style="padding: 20px; max-width: 150px; height: auto;" src="{{user.avatar}}">
+        <div class="col-md-2">
+          <img *ngIf="user.avatar" style="padding: 20px; max-width: 150px; height: auto;" src="{{user.avatar}}">
+          <img *ngIf="!user.avatar" style="padding: 20px; max-width: 150px; height: auto;"
+               src="../../../assets/no_photo.png">
         </div>
-        <div style="padding: 20px;" class="col-md-8">
+        <div style="padding: 20px;" class="col-md-10">
           <div class="row">
             <span style="font-size: 45px">{{user.login}}</span>
+          </div>
+          <div class="row">
+            <span style="font-size: 30px">Liczba recenzji: {{reviews.length}}</span>
           </div>
         </div>
       </div>
@@ -26,25 +45,40 @@
   </div>
 </div>
 
-<div *ngIf="currentPage == 'password'" class="jumbotron">
+<div *ngIf="user && currentPage == 'edit'" class="jumbotron">
   <div class="container">
     <div class="col-sm-6" style="padding: 20px;">
       <form>
-        <div class="col-md-12">
-          <label>Nowe hasło</label>
-          <div class="row">
-            <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <input
+                style="display: none"
+                type="file" (change)="onFileChanged($event)"
+                #fileInput>
+              <button style="margin-left: 30px" class="btn btn-info" (click)="fileInput.click()">Wybierz avatar
+              </button>
+            </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <label class="form-label">Powtórz hasło</label>
-          <div class="row">
-            <input type="password" [(ngModel)]="reapeatPassword" [ngModelOptions]="{standalone: true}">
-          </div>
+        <div *ngIf="avatar" style="font-weight: bold; font-size: 15px" class="row">
+          Wybrany avatar: {{avatar.name}}
         </div>
+        <!--<div class="col-md-12">-->
+        <!--<label>Nowe hasło</label>-->
+        <!--<div class="row">-->
+        <!--<input type="password" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-12">-->
+        <!--<label class="form-label">Powtórz hasło</label>-->
+        <!--<div class="row">-->
+        <!--<input type="password" [(ngModel)]="repeatPassword" [ngModelOptions]="{standalone: true}">-->
+        <!--</div>-->
+        <!--</div>-->
         <div class="col-md-12" style="text-align: left; padding: 15px">
-          <button type="submit" class="btn btn-success" (click)="changePassword()">
-            <span>zmień hasło</span>
+          <button type="submit" class="btn btn-success" (click)="onUpload()">
+            <span>Zapisz zmiany</span>
           </button>
         </div>
       </form>
@@ -52,11 +86,14 @@
   </div>
 </div>
 
-<div *ngIf="currentPage == 'reviews'" class="jumbotron">
-  <div *ngFor="let review of reviews">
+<div *ngIf="user && currentPage == 'reviews'">
+  <div style="font-weight: bold; font-size: 30px" class="jumbotron">
+    Nie dodałeś żadych recenzji
+  </div>
+  <div *ngFor="let review of reviews" class="jumbotron">
     <div class="container">
       <div style="font-weight: bold; font-size: 30px" class="col-md-4">
-        Ocena: {{review.rate}} / 100
+        Ocena: {{review.rate}} / 10
       </div>
       <div class="col-md-6">
         <div style=" font-weight: bold; font-size: 25px" class="row">
@@ -70,14 +107,63 @@
   </div>
 </div>
 
-<div *ngIf="currentPage == 'admin'" class="jumbotron">
+<div *ngIf="user && isAdmin && currentPage == 'newgame'" class="jumbotron">
   <div class="container">
-    <div style="text-align: center; padding: 20px;">
-      <div class="row">
-       Asministracja
+    <form>
+      <div style="font-size: 20px; margin: 10px;" class="col-md-12">
+        <div class="col-md-6">
+          <div class="row">
+            <input class="form-control-plaintext" placeholder="Tytuł" type="text" [(ngModel)]="newGame.title"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="row">
+            <input class="form-control-plaintext" placeholder="Opis" type="text" [(ngModel)]="newGame.description"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="row">
+            <input class="form-control-plaintext" placeholder="Gatunek" type="text" [(ngModel)]="newGame.genre"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <input class="form-control-plaintext" placeholder="Wydawca" type="text" [(ngModel)]="newGame.publisher"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="row">
+            <input class="form-control-plaintext" placeholder="Platforma" type="text" [(ngModel)]="newGame.platform"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="row">
+            <label style="font-weight: normal">Data wydania</label>
+          </div>
+          <div class="row">
+            <input style="margin-left: auto; width: 170px" class="form-check-input" placeholder="Data wydania"
+                   type="date" [(ngModel)]="newGame.launch_date"
+                   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-info" (click)="addGame()">Dodaj grę</button>
+  </div>
+</div>
+
+<div *ngIf="user && isAdmin && currentPage == 'users'">
+  <div *ngFor="let otheruser of users" class="jumbotron">
+    <div class="container">
+      <div class="row" style="padding: 10px; font-size: 24px;">
+        <div>
+          <img *ngIf="otheruser.avatar" style="max-width: 70px; height: auto; margin-left: 30px; cursor: pointer"
+               src="{{otheruser.avatar}}">
+          <img *ngIf="!otheruser.avatar" style="max-width: 70px; height: auto; margin-left: 30px; cursor: pointer"
+               src="../../../assets/no_photo.png">
+        </div>
+        <span style="margin-left: 30px; padding: 10px;">{{otheruser.login}} </span>
       </div>
     </div>
   </div>
 </div>
+
 
 

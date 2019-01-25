@@ -1,8 +1,8 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {User} from './user';
 
-const apiUrl: string = 'http://projekttasy.herokuapp.com';
+const apiUrl: string = 'https://projekttasy.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -13,39 +13,28 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get<Array<User>>(apiUrl + '/users');
+    let options = {
+      withCredentials: true
+    };
+    return this.http.get<Array<User>>(apiUrl + '/users', options);
   }
 
   getUserDetails(login: string) {
-    return this.http.get<User>(apiUrl + '/users/userDetails/' + login);
-  }
-
-  getLoggedUser() {
-    return this.http.get(apiUrl + '/loggedUsername');
+    return this.http.get<User>(apiUrl + '/userDetails/' + login);
   }
 
   registerUser(user: User) {
-    // let body = new FormData();
-    // body.append('user', user.login);
-    // body.append('password', user.password);
-
-    // let options = {
-    //   headers: new HttpHeaders().set('Content-Type', 'multipart/form-data')
-    // };
-
     return this.http.post(apiUrl + '/register2', user);
   }
 
-  loginUser(user: User) {
-    let body = new URLSearchParams();
-    body.set('user', user.login);
-    body.set('password', user.password);
-
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    };
-
-    return this.http.post(apiUrl + '/login', body.toString(), options);
+  changeAvatar(login: string, avatar: File) {
+    let headers = new HttpHeaders();
+    //this is the important step. You need to set content type as null
+    headers.set('Content-Type', 'application/octet-stream');
+    headers.set('Accept', 'multipart/form-data');
+    let params = new HttpParams();
+    const formData: FormData = new FormData();
+    formData.append('avatar', avatar);
+    formData.append('login', login);
+    return this.http.put(apiUrl + '/user/' + login + '/avatarUpdate', formData, {params, headers});
   }
-
-}

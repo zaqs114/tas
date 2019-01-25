@@ -1,0 +1,9 @@
+<div style="background: whitesmoke; padding: 10px" class="jumbotron">
+  <div class="row" style="padding: 10px; font-size: 24px;">
+    <div style="padding: 10px">#{{position}}</div>
+    <div style="margin-left: 30px; padding: 10px;">Ocena: {{ranking.score}} / 100</div>
+    <div style="margin-left: 30px; padding: 10px; cursor: pointer" routerLink="/game-page/{{ranking.gameid}}"
+         routerLinkActive="active">{{ranking.title}}
+    </div>
+  </div>
+</div>

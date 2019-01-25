@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
     if (this.reapeatPassword && this.reapeatPassword.length > 0 && this.reapeatPassword == this.user.password) {
       this.userService.registerUser(this.user).subscribe(suc => {
         this.router.navigate(['/']);
+      }, error =>{
+        this.alertService.error("Błąd rejestracji. Spróbuj ponownie póżniej.")
       });
     } else {
       this.alertService.error("Wprowadzone hasła się różnią. Spróbuj ponowanie wpisać hasło.");

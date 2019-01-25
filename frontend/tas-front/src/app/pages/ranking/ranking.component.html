@@ -1,0 +1,6 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Ranking</h1>
+    <app-ranking-item *ngFor="let rank of ranking; let i = index" [ranking]="rank" [position]=i+1 ></app-ranking-item>
+  </div>
+</div>

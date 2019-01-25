@@ -1,11 +1,11 @@
 import {Message} from '../message';
 
 export class Game extends Message {
-  public gameid: string;
+  public gameid: number;
   public icon: string;
   public title: string;
   public description: string;
-  public launch_date: number;
+  public launch_date: string;
   public publisher: string;
   public screen: string;
   public platform: string;

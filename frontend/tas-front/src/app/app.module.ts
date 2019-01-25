@@ -19,6 +19,9 @@ import { AlertComponent } from './tools/alert/alert.component';
 import {ReviewService} from './services/reviews/review.service';
 import {GameService} from './services/games/game.service';
 import {AlertService} from './tools/alert/alert.service';
+import {AuthService} from './services/auth/auth.service';
+import {RankingItemComponent} from './pages/ranking/ranking-item/ranking-item.component';
+import {RankingComponent} from './pages/ranking/ranking.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -26,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'game-page/:id', component: GamePageComponent },
   { path: 'profile/:id', component: UserProfileComponent },
   { path: 'game-list', component: GameListComponent },
+  { path: 'ranking', component: RankingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }
 ];
@@ -41,7 +45,9 @@ const appRoutes: Routes = [
     GameItemComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    RankingItemComponent,
+    RankingComponent
   ],
 imports: [BrowserModule,
   HttpClientModule,
@@ -53,7 +59,8 @@ imports: [BrowserModule,
     UserService,
     ReviewService,
     GameService,
-    AlertService
+    AlertService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

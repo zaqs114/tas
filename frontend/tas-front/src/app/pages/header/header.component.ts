@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../services/users/user.service';
+import {AuthService} from '../../services/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +9,21 @@ import {UserService} from '../../services/users/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public searchText: string;
-  public logged: boolean;
-  public loggedUsername: string;
-
-  constructor(private userService: UserService) {
+  constructor(private auth: AuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.userService.getLoggedUser().subscribe((username: string) => {
-      if(username) {
-        this.logged = true;
-        this.loggedUsername = username;
-      }
-    })
+
+  }
+
+  logged(){
+    return localStorage.getItem('logged');
+  }
+
+  logout() {
+    this.auth.logout().subscribe();
+    this.router.navigate(['/main']);
+    window.location.reload();
   }
 }

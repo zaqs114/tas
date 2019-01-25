@@ -3,7 +3,8 @@
     <div style="text-align: center; padding: 20px;">
       <div class="row">
         <div class="col-md-4">
-          <img style="padding: 20px; max-width: 250px; height: auto;" src="{{game.icon}}">
+          <img *ngIf="game.icon" style="padding: 20px; max-width: 250px; height: auto;" src="{{game.icon}}">
+          <img *ngIf="!game.icon" style="padding: 20px; max-width: 250px; height: auto;" src="../../../assets/no_photo.png">
         </div>
         <div style="padding: 20px;" class="col-md-4">
           <div class="row">
@@ -51,5 +52,35 @@
         {{review.content}}
       </div>
     </div>
+  </div>
+</div>
+
+<div *ngIf="!logged" class="jumbotron">
+  <div class="container">
+    <div style="font-weight: bold; font-size: 30px" class="row">
+      Zaloguj się aby dodać recenzje.
+    </div>
+  </div>
+</div>
+<app-alert></app-alert>
+<div *ngIf="logged" class="jumbotron">
+  <div class="container">
+    <div style="font-weight: bold; font-size: 30px" class="row">
+      Dodaj własną recenzje
+    </div>
+    <form>
+      <div style="font-weight: bold; font-size: 20px" class="col-md-4 row">
+        Ocena: <input class="form-control" style=" margin: 5px; width: 60px; font-size: 15px;" type="number" [(ngModel)]="newReview.rate" [ngModelOptions]="{standalone: true}"> / 10
+      </div>
+      <div class="col-md-8">
+        <div style="font-weight: bold; font-size: 25px" class="row">
+          <input class="form-control-plaintext" placeholder="Tytuł" type="text" [(ngModel)]="newReview.title" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div style="font-size: 20px" class="row">
+          <input class="form-control-plaintext" placeholder="Treść" type="text" [(ngModel)]="newReview.content" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-info" (click)="addReview()">Dodaj Recenzje</button>
   </div>
 </div>

@@ -4,44 +4,19 @@
     <a class="navbar-brand" routerLink="main"><img style="max-width: 100px; height: auto" src="../../../assets/onion.png"></a>
   </div>
 
-  <div class="collapse navbar-collapse">
+  <div style="padding-top: 40px" class="collapse navbar-collapse">
     <div class="col-md-8">
       <ul style="font-size: 2rem; " class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="game-list">Top 100</a>
+          <a class="nav-link" routerLink="game-list">Baza gier</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="main">Mobilne</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdownPlatform" aria-expanded="false" aria-haspopup="true"
-             data-toggle="dropdown">wg platformy</a>
-          <div style="font-size: 2rem" class="dropdown-menu" aria-labelledby="dropdownPlatform">
-            <a class="dropdown-item" routerLink="main">PC</a>
-            <a class="dropdown-item" routerLink="main">Sony</a>
-            <a class="dropdown-item" routerLink="main">Microsoft</a>
-            <a class="dropdown-item" routerLink="main">Nintendo</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdownGenre" aria-expanded="false" aria-haspopup="true"
-             data-toggle="dropdown">wg gatunku</a>
-          <div style="font-size: 2rem" class="dropdown-menu" aria-labelledby="dropdownGenre">
-            <a class="dropdown-item" routerLink="main">Fabularne</a>
-            <a class="dropdown-item" routerLink="main">Strzelanki</a>
-            <a class="dropdown-item" routerLink="main">Platformówki</a>
-            <a class="dropdown-item" routerLink="main">Strategiczne</a>
-            <a class="dropdown-item" routerLink="main">Karciane</a>
-            <a class="dropdown-item" routerLink="main">Wyścigowe</a>
-          </div>
+          <a class="nav-link" routerLink="ranking">Ranking</a>
         </li>
       </ul>
     </div>
-    <div>
-        <form  style="padding: 10px" class="form-inline my-2 my-md-0">
-          <input class="form-control" aria-label="Search" type="text" placeholder="Szukaj">
-        </form>
-        <div *ngIf="!logged">
+    <div class="col-md-4">
+        <div style="float: right;" *ngIf="!logged()">
           <span style="padding: 10px">
           <button class="btn btn-primary" type="submit" routerLink="/login">Zaloguj Się</button>
         </span>
@@ -49,8 +24,9 @@
           <button class="btn btn-success" type="submit" routerLink="/register">Zarejestruj Się</button>
         </span>
         </div>
-        <div *ngIf="logged">
-          Witaj {{logggedUsername}}!<i routerLink="profile" style="padding-left: 10px; font-size: 20px" class="fas fa-user-circle"></i>
+        <div style="float: right; font-size: 25px" *ngIf="logged()">
+         {{logged()}} <i routerLink="/profile/{{logged()}}" style="cursor: pointer;padding-left: 10px; padding-right: 10px; font-size: 40px" class="fas fa-user-circle"></i>
+            <button class="btn btn-primary" type="submit" (click)="logout()">Wyloguj Się</button>
         </div>
     </div>
 
