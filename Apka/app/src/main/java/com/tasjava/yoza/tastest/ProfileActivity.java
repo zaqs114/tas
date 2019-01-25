@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 import data.model.AddGame;
+import data.model.Post;
 import data.model.PostLogin;
 import data.model.remote.APIService;
 import data.model.remote.ApiUtils;
@@ -45,7 +47,6 @@ import retrofit2.Retrofit;
 public class ProfileActivity extends AppCompatActivity {
 
     private TextView dResponse;
-    private Intent image;
     private MultipartBody.Part multipartBody;
     private String filePath;
     private Uri fileUri;
@@ -97,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        -----------------
 //        KOMPONENTY LAYOUTU
 //        -----------------
-        
+
         final ImageView profileimage = (ImageView) findViewById(R.id.profileImage);
         final TextView username = (TextView) findViewById(R.id.pUsername);
         final Button updateImageBtn = (Button) findViewById(R.id.updateImageBtn);
@@ -134,7 +135,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.i("Response", response.body().toString());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-//                        Log.i("onSuccess", response.body().toString());
+                        Log.i("onSuccess", response.body().toString());
                         try{
                             username.setText(response.body().string());
                         }
@@ -152,8 +153,23 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
+//        String login = username.getText().toString().trim();
+//        mAPIService.getUserDetails(login).enqueue(new Callback<Post>() {
+//            @Override
+//            public void onResponse(Call<Post> call, Response<Post> response) {
+//                String stringImage = response.body().getAvatar();
+//                updateImage(stringImage);
+//            }
+//
+//            private void updateImage(String image) {
+//                Glide.with(ProfileActivity.this).load(image).into(profileimage);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Post> call, Throwable t) {
+//
+//            }
+//        });
     }
     public void sendImage(String login, Uri fileUri){
         Retrofit retrofit = NetworkClient.getRetrofitClient(this);
@@ -162,30 +178,32 @@ public class ProfileActivity extends AppCompatActivity {
         getRealPathFromURI(context, fileUri);
 
         File file = new File(filePath);
-        
+
         RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
 
         MultipartBody.Part part = MultipartBody.Part.createFormData("avatar", file.getName(), fileReqBody);
 
 
-        mAPIService.updateProfileImage(login, part).enqueue(new Callback<ResponseBody>() {
-//          
-            @Override
-            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+//        mAPIService.updateProfileImage(login, part).enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+//
+//                if(response.isSuccessful()){
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post sent to API" + response.body().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                Log.e(TAG, "unable to sent a post to API");
+//                t.printStackTrace();
+//            }
+//        });
 
-                if(response.isSuccessful()){
-                    showResponse(response.body().toString());
-                Log.i(TAG, "post sent to API" + response.body().toString());
-                }
+
     }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e(TAG, "unable to sent a post to API");
-                t.printStackTrace();
-            }
-        });
-    }
     private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");

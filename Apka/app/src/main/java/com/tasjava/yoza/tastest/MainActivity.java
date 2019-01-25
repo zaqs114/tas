@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private GamesAdapter adapter;
     private RecyclerView recyclerView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        /** Method to generate List of games using RecyclerView with custom adapter*/
 
     }
+    /** Method to generate List of games using RecyclerView with custom adapter*/
     private void generateGamesList(ArrayList<Games> gamesArrayList) {
         recyclerView = findViewById(R.id.recycler_view_games_list);
-        adapter = new GamesAdapter(gamesArrayList);
+        adapter = new GamesAdapter(this, gamesArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

@@ -13,6 +13,9 @@ public class Post {
         @SerializedName("password")
         @Expose
         private RequestBody password;
+        @SerializedName("avatar")
+        @Expose
+        private String avatar;
 
         public RequestBody getLogin() {
             return login;
@@ -29,6 +32,14 @@ public class Post {
         public void setPassword(RequestBody password) {
             this.password = password;
         }
+
+        public String getAvatar() {
+        return avatar;
+    }
+
+        public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
 
 //    @Override

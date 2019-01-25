@@ -45,11 +45,17 @@ public interface APIService {
     Call<PostLogin> postLogin(@Field("login") String login,
                               @Field("password") String password);
 
-    @GET("/games")
+    @GET("/userDetails/{login}")
+    Call<Post> getUserDetails(@Path("login") String login);
+
+    @GET("/games2")
     Call<List<Games>> getGamesData();
 
+    @GET("/games/ranking")
+    Call<List<Games>> getGamesRanking();
+
     @GET("games/{gameid}")
-    Call<Games> getGameDetail(@Path("gameid") String gameid);
+    Call<Games> getGameDetail(@Path("gameid") Integer gameid);
 
     @GET("/loggedUsername")
     Call<ResponseBody> getLoggedUsername();
@@ -61,9 +67,6 @@ public interface APIService {
 
 
 
-
-//    @GET("/loggedUsername")
-//    Call<User> getLoggedUser();
 //
 //    @GET("/users")
 //    Call<ResponseBody> getLoggedUsers();
@@ -74,12 +77,3 @@ public interface APIService {
 }
 
 //binary (non-alphanumeric) data (or a significantly sized payload) to transmit, use multipart. Otherwise, use urlencoded
-
-/*
-public interface APIService {
-    @POST("/register")
-    @FormUrlEncoded
-    Call<Post> savePost(@Field("login") String login,
-                        @Field"password") String password);
-}
-*/

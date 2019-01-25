@@ -45,6 +45,9 @@ public class AddGame {
     @SerializedName("genre")
     
     private RequestBody genre;
+    @SerializedName("score")
+
+    private String score;
 
 
 
@@ -110,6 +113,14 @@ public class AddGame {
 
     public void setGenre(RequestBody genre) {
         this.genre = genre;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 
 //    @Override

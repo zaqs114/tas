@@ -84,7 +84,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GamesViewHolde
 
         //        TextView gameid;
         TextView gametitle, gameicon, gamedecription, gamescore, gamelaunchdate, gamepublisher, gamegenre, gameplatform;
-        RelativeLayout parentLayout;
 
         GamesViewHolder(View itemView) {
             super(itemView);
