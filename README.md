@@ -15,6 +15,12 @@ This is something similar to RottenTomatoes but with video games. We want to imp
  4. Now just run `http://localhost:8000/tas/` and enjoy.
  5. When you want to finish, Ctrl-C the terminal. You might also want to type `docker-compose down`.
 
+### How to run frontend:
+ 1. Get Node.
+ 2. npm install -g @angular/cli
+ 3. npm start
+ 4. Now just run `http://localhost:4200/tas/` and enjoy.
+ 
 ### Authors and responsibilities:
 - Łukasz Siwocha: database, API
 - Hubert Staszek: Docker, API
