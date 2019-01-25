@@ -38,3 +38,4 @@ export class UserService {
     formData.append('login', login);
     return this.http.put(apiUrl + '/user/' + login + '/avatarUpdate', formData, {params, headers});
   }
+}
