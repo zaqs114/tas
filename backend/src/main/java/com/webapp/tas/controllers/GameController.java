@@ -21,6 +21,7 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class GameController {
 
     @Autowired
@@ -42,6 +43,11 @@ public class GameController {
     @GetMapping("/games")
     public List<GameShortDto> gamesList(){
         return jooq.select(GAMES.GAMEID, GAMES.TITLE, GAMES.ICON).from(GAMES).fetchInto(GameShortDto.class);
+    }
+
+    @GetMapping("/games2")
+    public List<Game> gamesList2(){
+        return jooq.select().from(GAMES).fetchInto(Game.class);
     }
 
     /**
@@ -98,7 +104,7 @@ public class GameController {
             @RequestParam(value = "icon", required = false) MultipartFile iconfile,
             @RequestParam(value = "title") String title,
             @RequestParam(value = "description") String description,
-            @RequestParam(value = "launch_date") Date launch_date,
+            @RequestParam(value = "launch_date") String launch_date,
             @RequestParam(value = "publisher") String publisher,
             @RequestParam(value = "screen", required = false) MultipartFile screenfile,
             @RequestParam(value = "platform") String platform,

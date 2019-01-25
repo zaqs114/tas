@@ -3,6 +3,7 @@ package com.webapp.tas.controllers;
 import com.webapp.tas.errors.NotFoundException;
 import com.webapp.tas.errors.NotUniqueExcetpion;
 import com.webapp.tas.objects.User;
+import com.webapp.tas.objects.UserShort;
 import com.webapp.tas.s3.AmazonClient;
 import com.webapp.tas.tables.records.UsersRecord;
 import org.jooq.DSLContext;
@@ -65,6 +66,21 @@ public class UserController {
         }
         return HttpStatus.CREATED;
     }
+
+    @PostMapping("/register2")
+    public HttpStatus registerUser2(@RequestBody UserShort user){
+        UsersRecord ur = jooq.newRecord(USERS);
+        ur.setLogin(user.getLogin());
+        ur.setPassword(passwordEncoder.encode(user.getPassword()));
+        ur.setAdminPerm(0);
+        try {
+            ur.store();
+        }catch (Exception e){
+            throw new NotUniqueExcetpion("User is not unique.");
+        }
+        return HttpStatus.CREATED;
+    }
+
 
     //checking nickname of logged user
     @GetMapping("/loggedUsername")

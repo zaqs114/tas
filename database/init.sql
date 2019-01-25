@@ -21,7 +21,7 @@ create table games
   icon        varchar(200),
   title       varchar(30)  not null,
   description varchar(500) not null,
-  launchdate  date         not null,
+  launchdate  varchar(200)         not null,
   publisher   varchar(30)  not null,
   screen      varchar(200),
   platform    varchar(100) not null,

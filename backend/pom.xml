@@ -93,6 +93,11 @@
             <artifactId>aws-java-sdk-s3</artifactId>
             <version>1.11.437</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
     </dependencies>
 
     <build>
