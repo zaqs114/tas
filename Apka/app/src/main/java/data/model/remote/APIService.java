@@ -65,6 +65,15 @@ public interface APIService {
     Call<ResponseBody> updateProfileImage(@Path("login") String login,
                             @Part MultipartBody.Part profileImage);
 
+    @POST("/addreview")
+    @Multipart
+    Call<Review> addReview(@Part("title") RequestBody title,
+                          @Part("content") RequestBody content,
+                           @Part("rate") Integer rate,
+                          @Part("userID") RequestBody username,
+                         @Part("gameID") Integer gameid);
+
+
 
 
 //

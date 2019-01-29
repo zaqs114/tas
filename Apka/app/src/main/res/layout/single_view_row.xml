@@ -58,6 +58,40 @@
                     android:padding="3dp"
                     android:text="X"/>
             </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<TextView-->
+                    <!--android:visibility="gone"-->
+                    <!--android:text="aa"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/gamedescription"/>-->
+                <!--<TextView-->
+                    <!--android:visibility="gone"-->
+                    <!--android:text="aa"-->
+                    <!--android:id="@+id/gamescore"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<TextView-->
+                    <!--android:visibility="gone"-->
+                    <!--android:text="aa"-->
+                    <!--android:id="@id/gamelaunchdate"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<TextView-->
+                    <!--android:id="@id/gamepublisher"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:text="aa"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--<TextView-->
+                    <!--android:id="@+id/gameplatform"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:text="aa"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
 
         </LinearLayout>
 

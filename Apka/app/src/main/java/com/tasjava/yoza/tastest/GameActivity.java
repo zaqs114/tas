@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.util.List;
 
 import data.model.Games;
@@ -76,6 +80,8 @@ public class GameActivity extends AppCompatActivity {
         final String title = i.getExtras().getString("title");
         final String icon = i.getExtras().getString("icon");
         final Integer id = i.getExtras().getInt("id");
+//        final String description = i.getExtras().getString("description");
+//        final String score = i.getExtras().getString("score");
 
 //        getGameDetail()
 
@@ -89,8 +95,11 @@ public class GameActivity extends AppCompatActivity {
         gamepublisher = (TextView) findViewById(R.id.gamepublisher);
 
         gametitle.setText(title);
+//        gamescore.setText(score);
+//        gamedescription.setText(description);
 
         mAPIService = ApiUtils.getAPIService();
+
         Call<Games> call = mAPIService.getGameDetail(id);
 
         Log.wtf("URL Called", call.request().url() + "");
@@ -102,7 +111,28 @@ public class GameActivity extends AppCompatActivity {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
                         try{
-                            gamedescription.setText(response.body().getDescription());
+                            JsonParser parser = new JsonParser();
+                            String json = response.toString();
+                            JsonElement jsonTree = parser.parse(json);
+
+                            if(jsonTree.isJsonArray()) {
+                                JsonObject jsonObject = jsonTree.getAsJsonObject();
+                                JsonElement score  = jsonObject.get("score");
+                                JsonElement description  = jsonObject.get("description");
+                                JsonElement launch_date  = jsonObject.get("launch_date");
+                                JsonElement publisher  = jsonObject.get("publisher");
+                                JsonElement platform  = jsonObject.get("platform");
+                                JsonElement genre  = jsonObject.get("genre");
+
+
+                            }
+
+
+
+
+
+
+//                            gamedescription.setText(response.body().getDescription());
                         }
                         catch (Exception e){
                             e.printStackTrace();

@@ -5,6 +5,8 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
+import com.tasjava.yoza.tastest.AddReviewActivity;
 import com.tasjava.yoza.tastest.GameActivity;
 import com.tasjava.yoza.tastest.ItemClickListener;
 import com.tasjava.yoza.tastest.R;
@@ -37,12 +40,14 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
     public View view;
     public ClipData.Item currentItem;
     private Context c;
+    private Context a;
     private ItemClickListener itemClickListener;
 
     public GamesAdapter(Context ctx, ArrayList<Games> dataList) {
 
         this.dataList = dataList;
         this.c = ctx;
+        this.a = ctx;
     }
 
     @Override
@@ -79,6 +84,18 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
         holder.gametitle.setText(gameTitle);
 //        holder.gamedecription.setText(gameDescription);
 //        holder.gameicon.setText(gameIcon);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(a);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("id", gameId); //InputString: from the EditText
+        editor.commit();
+
+//        holder.setItemClickListener(new ItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int pos) {
+//                Intent i = new Intent(a, AddReviewActivity.class);
+//                i.putExtra("id", gameId);
+//            }
+//        });
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {

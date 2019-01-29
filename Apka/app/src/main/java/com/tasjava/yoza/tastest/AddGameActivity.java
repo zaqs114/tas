@@ -19,6 +19,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,6 +96,10 @@ public class AddGameActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(AddGameActivity.this,
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
 
+        final ImageView homebutton = (ImageView) findViewById(R.id.homebutton);
+        final ImageView profilebtn = (ImageView) findViewById(R.id.profilebtn);
+        final ImageView rankingbtn = (ImageView) findViewById(R.id.rankingbtn);
+        final ImageView supportbtn = (ImageView) findViewById(R.id.supportbtn);
         final EditText gametitle = (EditText) findViewById(R.id.gametitle);
         final EditText gamelaunchdate = (EditText) findViewById(R.id.gamelaunchdate);
         final EditText gamepublisher = (EditText) findViewById(R.id.gamepublisher);
@@ -103,6 +108,38 @@ public class AddGameActivity extends AppCompatActivity {
         final EditText gamedescription = (EditText) findViewById(R.id.gamedescription);
         final Button addimage = (Button) findViewById(R.id.addimage);
         final Button addgamebtn = (Button) findViewById(R.id.addgamebtn);
+
+        homebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(AddGameActivity.this, MainActivity.class);
+                AddGameActivity.this.startActivity(homeIntent);
+            }
+        });
+
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profileIntent = new Intent(AddGameActivity.this, ProfileActivity.class);
+                AddGameActivity.this.startActivity(profileIntent);
+            }
+        });
+
+        rankingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rankingIntent = new Intent(AddGameActivity.this, RankingActivity.class);
+                AddGameActivity.this.startActivity(rankingIntent);
+            }
+        });
+
+        supportbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent supportIntent = new Intent(AddGameActivity.this, SupportActivity.class);
+                AddGameActivity.this.startActivity(supportIntent);
+            }
+        });
 
         dResponse = (TextView) findViewById(R.id.dResponse);
 
