@@ -1,8 +1,7 @@
 # tas
 This is the repository for our Server-Oriented Technology class.
 The task was to create a full web-application with mobile app.
-### Topic:
-This is something similar to RottenTomatoes but with video games. We want to implement such things like:
+This is something similar to RottenTomatoes but with video games. We implemented things like:
 - registering users
 - user profiles
 - review system
